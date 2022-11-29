@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APPLE_SWIFT_FORMAT_EXECUTABLEPATH</key>
+	<string>$(APPLE_SWIFT_FORMAT_EXECUTABLEPATH)</string>
+	<key>CLANG_FORMAT_EXECUTABLEPATH</key>
+	<string>$(CLANG_FORMAT_EXECUTABLEPATH)</string>
+	<key>NPX_EXECUTABLEPATH</key>
+	<string>$(NPX_EXECUTABLEPATH)</string>
+	<key>PRETTIER_EXECUTABLEPATH</key>
+	<string>$(PRETTIER_EXECUTABLEPATH)</string>
+	<key>SWIFT_FORMAT_EXECUTABLEPATH</key>
+	<string>$(SWIFT_FORMAT_EXECUTABLEPATH)</string>
+	<key>XPC_SERVICE_BUNDLE_IDENTIFIER</key>
+	<string>$(BUNDLE_IDENTIFIER_BASE).EditorExtensionXPCService</string>
+</dict>
+</plist>
