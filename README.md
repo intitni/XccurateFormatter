@@ -1,6 +1,6 @@
 # Xccurate Formatter
 
-Xccurate Formatter is a Xcode Source Extension that provide a universal format file action for all file types it recognizes according to the project-specific configurations.
+Xccurate Formatter is an Xcode Source Extension that provides a universal format file action for all file types it recognizes according to the project-specific configurations.
 
 It supports the following formatters:
 
@@ -15,7 +15,7 @@ Check the file `UTIToExtensionName.swift` for supported file types. Some of them
 
 ### Installing Formatters
 
-Xccurate Formatter doesn't support code formatting on its own. You will need to install the formatters by yourself, and provide a executable path for each formatter in the app.
+Xccurate Formatter doesn't support code formatting on its own. You will need to install the formatters by yourself and provide an executable path for each formatter in the app.
 
 For example, to enable SwiftFormat, you can:
 
@@ -42,23 +42,23 @@ All fields are optional.
 
 Place the formatter configuration files at the project root or its parent directories. Xccurate Formatter will use the nearest configuration it finds to determine which formatter to use.
 
-If no configuration is found, it will use the first formatter in the supported formatter list that supports the language and has it's executable path set.
+If no configuration is found, it will use the first formatter in the supported formatter list that supports the language and has its executable path set.
 
 ## Limitations
 
-- Since Xcode only provides the UTI of the editing file but not the file extension, the formatter won't support files that Xcode doesn't know. e.g. even though `.graphql` is support by Prettier, `.graphql` will be recognized as `public.plain-text` by Xcode.
+- Since Xcode only provides the UTI of the editing file but not the file extension, the formatter won't support files that Xcode doesn't know. e.g. even though `.graphql` is supported by Prettier, `.graphql` will be recognized as `public.plain-text` by Xcode.
 - Xccurate Formatter can only read the configurations at the root of the project, or anywhere in its parent directories. See **How It Works** below for detail.
-- Every time you quit Xcode and open it again, the extension will take a few seconds(?) to warm up the first time it runs, thanks too the Apple Script workaround.
+- Every time you quit Xcode and open it again, the extension will take a few seconds(?) to warm up the first time it runs, thanks to the Apple Script workaround.
 
 ## How It Works
 
-Source extension itself must be sandboxed, but it can still talk to XPC services that are not. That way, we can let the XPC service do the dirty work and return the formatted code back to the extension.
+The source extension itself must be sandboxed, but it can still talk to XPC services that are not. That way, we can let the XPC service do the dirty work and return the formatted code back to the extension.
 
 The dirty work will be:
 
-1. Use Apple Script to get the opening project path of the frontmost Xcode window. (An Accessibility API trick used to work with Xcode 13, but failed to work any more when building with Xcode 14.) Sadly we can't get the file path.
+1. Use Apple Script to get the opening project path of the frontmost Xcode window. (An Accessibility API trick used to work with Xcode 13, but failed to work anymore when building with Xcode 14.) Sadly we can't get the file path.
 2. Find upwards the nearest configuration file to determine which formatter to use.
-   For example, if you are formatting a Swift file, and the folders structure like this
+   For example, if you are formatting a Swift file, and the folders structured like this
    ```
    parent
     |- .swift-format
@@ -68,4 +68,4 @@ The dirty work will be:
    ```
    Swift Format will be used.
 3. Create a temp file at the project root (so the formatters can read other configuration files like .swift-version), paste the code to the file, and run the formatter on the file.
-4. Return the formatted code back to the extension, delete the temp file.
+4. Return the formatted code back to the extension, and delete the temp file.
