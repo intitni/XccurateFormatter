@@ -1,4 +1,4 @@
-# Xccurate Formatter
+# Xccurate Formatter <img alt="Logo" src="https://github.com/intitni/XccurateFormatter/blob/0dce4d51112e852b7d1f3e961bfd79228dca8ca9/XccurateFormatter/Assets.xcassets/AppIcon.appiconset/1024%20x%201024%20your%20icon@64.png" align="right" height="50">
 
 Xccurate Formatter is an Xcode Source Extension that provides a universal format file action for all file types it recognizes according to the project-specific configurations.
 
