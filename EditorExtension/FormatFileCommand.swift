@@ -11,7 +11,6 @@ class FormatFileCommand: NSObject, XCSourceEditorCommand {
         service.formatFile(content: content, uti: uti, completionHandler: {
             switch $0 {
             case let .failure(error):
-                print(error)
                 completionHandler(error)
             case let .success(content):
                 let selectionsRangesToRestore = invocation.buffer.selections

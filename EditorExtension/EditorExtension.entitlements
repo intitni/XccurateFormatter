@@ -6,11 +6,19 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>gourp.com.intii.XccurateFormatter</string>
+		<string>$(TeamIdentifierPrefix)gourp.com.intii.XccurateFormatter</string>
 	</array>
 	<key>com.apple.security.automation.apple-events</key>
 	<true/>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
+	<key>com.apple.security.network.client</key>
+	<true/>
+	<key>com.apple.security.network.server</key>
+	<true/>
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>$(BUNDLE_IDENTIFIER_BASE).EditorExtensionXPCService</string>
+	</array>
 </dict>
 </plist>

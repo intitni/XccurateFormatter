@@ -1,6 +1,9 @@
 import Foundation
 
-let listener = NSXPCListener.service()
+let listener = NSXPCListener(
+    machServiceName: Bundle.main.object(forInfoDictionaryKey: "BUNDLE_IDENTIFIER_BASE") as! String
+        + ".EditorExtensionXPCService"
+)
 let delegate = ServiceDelegate()
 listener.delegate = delegate
 listener.resume()

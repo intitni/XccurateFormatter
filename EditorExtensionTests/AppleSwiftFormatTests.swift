@@ -18,10 +18,10 @@ final class AppleSwiftFormatTests: XCTestCase {
         UserDefaults().removePersistentDomain(forName: suiteName)
     }
 
-    func testNoExecutablePathSet() async throws {
+    func testNoExecutablePathSet() throws {
         Settings.storage.set("", forKey: SettingsKey.defaultAppleSwiftFormatExecutablePath)
         do {
-            _ = try await Service().format(
+            _ = try TestService().format(
                 content: """
                        var        name = "dog"
                 """,
@@ -34,8 +34,8 @@ final class AppleSwiftFormatTests: XCTestCase {
         }
     }
 
-    func testFormatWithDefaultExecutablePath() async throws {
-        let result = try await Service().format(
+    func testFormatWithDefaultExecutablePath() throws {
+        let result = try TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -51,7 +51,7 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomConfiguration() async throws {
+    func testFormatWithCustomConfiguration() throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -72,7 +72,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".swift-format").path,
             contents: config.data(using: .utf8)
         )
-        let result = try await Service().format(
+        let result = try TestService().format(
             content: """
             struct Cat {
               var name = "Dog"
@@ -92,7 +92,7 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomExecutablePath() async throws {
+    func testFormatWithCustomExecutablePath() throws {
         Settings.storage.set("", forKey: SettingsKey.defaultAppleSwiftFormatExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -111,7 +111,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: config.data(using: .utf8)
         )
-        let result = try await Service().format(
+        let result = try TestService().format(
             content: """
                    var        name = "dog"
             """,

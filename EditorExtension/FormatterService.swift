@@ -5,7 +5,7 @@ let service = EditorExtensionService()
 final class EditorExtensionService {
     lazy var connection: NSXPCConnection = {
         let connection = NSXPCConnection(
-            serviceName: Bundle(for: EditorExtensionService.self)
+            machServiceName: Bundle(for: EditorExtensionService.self)
                 .object(forInfoDictionaryKey: "XPC_SERVICE_BUNDLE_IDENTIFIER") as! String
         )
         connection.remoteObjectInterface =
