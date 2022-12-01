@@ -27,6 +27,13 @@ Go to Settings.app search for Xcode extension, and enable Xccurate Formatter.
 
 If the extension complains that it has no permission to use Accessibility API, go turn it on in Settings.app for `XccurateFormatter`.
 
+If it keeps complaining (especially when after you updated the app or run it from Xcode), try:
+
+- Remove the app from Accessibility settings. Add it back manually, or use the extension once then check the list again.
+- Remove Launch Agent and setup again.
+
+It can be tricky.
+
 ### Setup Launch Agent
 
 You have to click "Setup Launch Agent for XPC Service" to make the extension work. The app will put a plist file under `~/Library/LaunchAgents` and load it with `launchctl`.
