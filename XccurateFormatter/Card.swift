@@ -24,7 +24,6 @@ struct Card<Content: View>: View {
             }.font(.headline)
             content()
         }
-        .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(.all, 12)
         .background(Color(nsColor: .controlBackgroundColor))
         .border(Color(nsColor: .separatorColor))

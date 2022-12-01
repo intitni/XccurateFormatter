@@ -74,6 +74,17 @@ struct ContentView: View {
             }
             .padding()
         }
+        .overlay(alignment: .topLeading) {
+            Text(
+                Bundle.main
+                    .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+            )
+            .foregroundColor(.white)
+            .padding(.all, 4)
+            .background(Color.black)
+            .cornerRadius(4)
+            .padding(4)
+        }
     }
 }
 

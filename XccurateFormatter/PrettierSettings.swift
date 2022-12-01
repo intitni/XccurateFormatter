@@ -31,6 +31,8 @@ struct PrettierSettings: View {
                 Text(
                     "Optional. Used when you set `usePrettierFromNodeModule` to `true` in `.xccurateformatter`."
                 )
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .font(.footnote)
                 .foregroundColor(Color(nsColor: .secondaryLabelColor))
             }
