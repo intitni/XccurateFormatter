@@ -126,7 +126,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             """
         )
     }
-    
+
     func testFormatPlayground() throws {
         let result = try TestService().format(
             content: """
@@ -143,7 +143,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             """
         )
     }
-    
+
     func testFormatPlaygroundPage() throws {
         let result = try TestService().format(
             content: """
@@ -160,7 +160,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             """
         )
     }
-    
+
     func testFormatSwiftPackage() throws {
         let result = try TestService().format(
             content: """

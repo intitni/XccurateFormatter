@@ -123,7 +123,7 @@ There are 4 targets in this project:
 
 When you need to run the extension in Xcode, you normally need to:
 
-1. Run `XccurateFormatter` and update the settings. 
+1. Run `XccurateFormatter` and update the settings.
 2. Run `EditorExtensionXPCCLI`.
 3. Run `EditorExtension`.
 
