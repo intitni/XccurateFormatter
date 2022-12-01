@@ -1,6 +1,6 @@
 # Xccurate Formatter <img alt="Logo" src="https://github.com/intitni/XccurateFormatter/blob/0dce4d51112e852b7d1f3e961bfd79228dca8ca9/XccurateFormatter/Assets.xcassets/AppIcon.appiconset/1024%20x%201024%20your%20icon@64.png" align="right" height="50">
 
-Xccurate Formatter is an Xcode Source Editor Extension that reads the **project specific configurations**. It provides a universal format file action for all file types it recognizes.
+Xccurate Formatter is an Xcode Source Editor Extension that reads the **project-specific configurations**. It provides a universal format file action for all file types it recognizes.
 
 It supports the following formatters:
 
@@ -10,6 +10,14 @@ It supports the following formatters:
 - [Prettier](https://prettier.io/)
 
 Check the file `UTIToExtensionName.swift` for supported file types. Some of them require Prettier plugins.
+
+<a style="text-decoration: none; background-color: #0A84FF; color: white; padding: 10px 14px; font-size: 20px; font-weight: bold; display: flex; align-item: center; justify-content: center; border-radius: 8px; border: 2px solid #FFFFFF33;" href="https://github.com/intitni/XccurateFormatter/releases">Download</a>
+
+## Note
+
+The app was initially built with an Apple Script solution with many limitations. Luckily some troubles caused by it led me to a better solution. 塞翁失马焉知非福.
+
+But the solution shift was such a rush that some code may not make too much sense to the new solution.
 
 ## Usage
 
@@ -84,7 +92,7 @@ The dirty work will be:
         |- code.swift
    ```
    Swift Format will be used.
-3. Create a temp file at the project root or in the same folder to the original file (so the formatters can read other configuration files like .swift-version), paste the code to the file, and run the formatter on the file.
+3. Create a temp file at the project root or in the same folder as the original file (so the formatters can read other configuration files like .swift-version), paste the code to the file, and run the formatter on the file.
 4. Return the formatted code to the extension, and delete the temp file.
 
 Though it's possible to embed a non-sandboxed XPC Service inside the sandboxed extension, notarization will fail.
@@ -93,8 +101,30 @@ The workaround I am using is to build the XPC Service into a command line tool, 
 
 This method also makes the Accessibility API usable from the XPC Service.
 
-## Note
+## Development Instruction
 
-The app was initially built with an Apple Script solution with many limitations. Luckily some troubles caused by it led me to a better solution. 塞翁失马焉知非福.
+### Building and Running the App
 
-But the solution shift was such a rush that some code may not make too much sense to the new solution.
+You can change the `BUNDLE_IDENTIFIER_BASE` in `Config.xcconfig` to whatever you want, but please do not change the bundle identifiers on the target directly. Some of the suffixes are hardcoded in info.plist and code to let them find each other.
+
+There are 4 targets in this project:
+
+- XccurateFormatter: the settings app
+- EditorExtension: the Xcode Source Editor Extension
+- EditorExtensionXPCCLI: the XPC Service
+- EditorExtensionTests: Tests for the extension and the XPC Services
+
+When you need to run the extension in Xcode, you normally need to:
+
+1. Run `XccurateFormatter` and update the settings. 
+2. Run `EditorExtensionXPCCLI`.
+3. Run `EditorExtension`.
+
+### Testing
+
+The test target doesn't have any host application, it just includes all the files that need to be tested, thanks to the trickiness of XPC Services.
+
+To run the tests, you first need to:
+
+- install swift-format, SwiftFormat, ClangFormat, Node, Prettier.
+- provide their executable paths in `Config.xcconfig`.
