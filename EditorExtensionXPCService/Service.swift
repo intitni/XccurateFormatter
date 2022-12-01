@@ -22,10 +22,12 @@ final class Service {
     func formatEditingFile(content: String, uti: String, contentURL: URL?) throws -> String {
         let fileExtension = contentURL?.pathExtension
         let utiExtension = utiToExtensionName[uti]
-        let tempFileExtension: String? = {
-            if let fileExtension, !fileExtension.isEmpty { return fileExtension }
+        let tempFileExtension: (any Formatter) -> String? = { formatter in
+            if let fileExtension,
+               !fileExtension.isEmpty,
+               formatter.supportedFileExtensions.contains(fileExtension) { return fileExtension }
             return utiExtension
-        }()
+        }
         let formatters = [
             SwiftFormat(),
             AppleSwiftFormat(),
@@ -52,7 +54,7 @@ final class Service {
             }
             let result = try format(
                 content: content,
-                fileExtension: tempFileExtension,
+                fileExtension: tempFileExtension(formatter),
                 with: formatter,
                 confURL: confURL,
                 projectConfig: projectConfig,
@@ -67,7 +69,7 @@ final class Service {
             }
             let result = try format(
                 content: content,
-                fileExtension: tempFileExtension,
+                fileExtension: tempFileExtension(formatter),
                 with: formatter,
                 confURL: nil,
                 projectConfig: nil,

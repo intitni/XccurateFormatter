@@ -30,7 +30,7 @@ final class PrettierTests: XCTestCase {
                              const        name       = "dog"
                 """,
                 uti: "com.netscape.javascript-source",
-                projectPath: nil
+                contentPath: nil
             )
             XCTFail("Error expected")
         } catch {
@@ -44,7 +44,7 @@ final class PrettierTests: XCTestCase {
                          const        name       = "dog"
             """,
             uti: "com.netscape.javascript-source",
-            projectPath: nil
+            contentPath: nil
         )
         XCTAssertEqual(
             result,
@@ -80,7 +80,7 @@ final class PrettierTests: XCTestCase {
             }
             """,
             uti: "com.netscape.javascript-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,
@@ -117,7 +117,7 @@ final class PrettierTests: XCTestCase {
                          const        name       = "dog"
             """,
             uti: "com.netscape.javascript-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,
@@ -156,7 +156,7 @@ final class PrettierTests: XCTestCase {
                          const        name       = "dog"
             """,
             uti: "com.netscape.javascript-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,

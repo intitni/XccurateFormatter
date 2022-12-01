@@ -58,7 +58,7 @@ final class FormatterDecisionTests: XCTestCase {
             }
             """,
             uti: "public.swift-source",
-            projectPath: secondaryDirURL.path
+            contentPath: secondaryDirURL.path
         )
         XCTAssertEqual(
             result,
