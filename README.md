@@ -1,4 +1,4 @@
-# Xccurate Formatter <img alt="Logo" src="https://github.com/intitni/XccurateFormatter/blob/0dce4d51112e852b7d1f3e961bfd79228dca8ca9/XccurateFormatter/Assets.xcassets/AppIcon.appiconset/1024%20x%201024%20your%20icon@64.png" align="right" height="50">
+# Xccurate Formatter <img alt="Logo" src="/AppIcon.png" align="right" height="50">
 
 Xccurate Formatter is an Xcode Source Editor Extension that reads the **project-specific configurations**. It provides a universal format file action for all file types it recognizes.
 
@@ -11,7 +11,7 @@ It supports the following formatters:
 
 Check the file `UTIToExtensionName.swift` for supported file types. Some of them require Prettier plugins.
 
-<a style="text-decoration: none; background-color: #0A84FF; color: white; padding: 10px 14px; font-size: 20px; font-weight: bold; display: flex; align-item: center; justify-content: center; border-radius: 8px; border: 2px solid #FFFFFF33;" href="https://github.com/intitni/XccurateFormatter/releases">Download</a>
+[Download From Releases](https://github.com/intitni/XccurateFormatter/releases)
 
 ## Note
 
@@ -112,7 +112,7 @@ This method also makes the Accessibility API usable from the XPC Service.
 
 ### Building and Running the App
 
-You can change the `BUNDLE_IDENTIFIER_BASE` in `Config.xcconfig` to whatever you want, but please do not change the bundle identifiers on the target directly. Some of the suffixes are hardcoded in info.plist and code to let them find each other.
+You can change the `BUNDLE_IDENTIFIER_BASE` in `Config.debug.xcconfig` to whatever you want, but please do not change the bundle identifiers on the target directly. Some of the suffixes are hardcoded in info.plist and code to let them find each other.
 
 There are 4 targets in this project:
 
@@ -134,4 +134,4 @@ The test target doesn't have any host application, it just includes all the file
 To run the tests, you first need to:
 
 - install swift-format, SwiftFormat, ClangFormat, Node, Prettier.
-- provide their executable paths in `Config.xcconfig`.
+- provide their executable paths in `Config.debug.xcconfig`.
