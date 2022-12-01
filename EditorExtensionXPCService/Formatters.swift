@@ -12,7 +12,7 @@ struct ProjectConfig: Codable {
 protocol Formatter {
     var executablePath: String? { get }
     var configurationFileName: NSRegularExpression { get }
-    var supportedFileUTI: [String] { get }
+    var supportedFileExtensions: [String] { get }
     func format(
         file: URL,
         currentDirectoryURL: URL?,
@@ -28,7 +28,7 @@ struct SwiftFormat: Formatter {
         try! .init(pattern: #"^\.swiftformat$"#, options: [.caseInsensitive])
     }
 
-    var supportedFileUTI: [String] { ["public.swift-source"] }
+    var supportedFileExtensions: [String] { ["swift"] }
 
     func format(
         file: URL,
@@ -56,7 +56,7 @@ struct AppleSwiftFormat: Formatter {
         try! .init(pattern: #"^\.swift-format$"#, options: [.caseInsensitive])
     }
 
-    var supportedFileUTI: [String] { ["public.swift-source"] }
+    var supportedFileExtensions: [String] { ["swift"] }
 
     func format(
         file: URL,
@@ -85,18 +85,18 @@ struct ClangFormat: Formatter {
         try! .init(pattern: #"^\.clang-format$"#, options: [.caseInsensitive])
     }
 
-    var supportedFileUTI: [String] {
+    var supportedFileExtensions: [String] {
         [
-            "public.c-source",
-            "public.c-plus-plus-source",
-            "public.objective-c-source",
-            "public.objective-c-plus-plus-source",
-            "com.sun.java-source",
-            "public.c-header",
-            "public.c-plus-plus-header",
-            "public.json",
-            "com.microsoft.csharp-source",
-            "public.protobuf-source",
+            "c",
+            "cpp", "cc", "cp", "c++", "cxx",
+            "m",
+            "mm",
+            "java", "jav",
+            "h", "pch", "pch++",
+            "hh", "hpp", "h++", "hxx", "hp",
+            "json",
+            "cs",
+            "proto",
         ]
     }
 
@@ -130,19 +130,21 @@ struct Prettier: Formatter {
         try! .init(pattern: #"^\.prettierrc(\..*)?$"#, options: [.caseInsensitive])
     }
 
-    var supportedFileUTI: [String] {
+    var supportedFileExtensions: [String] {
         [
-            "com.netscape.javascript-source",
-            "public.jsx",
-            "public.tsx",
-            "public.css",
-            "org.lesscss.less",
-            "com.barebones.bbedit.scss-source",
-            "public.html",
-            "public.json",
-            "net.daringfireball.markdown",
-            "public.yaml",
-            "public.xml",
+            "js",
+            "jsx",
+            "ts",
+            "tsx",
+            "css",
+            "less",
+            "scss",
+            "html", "htm",
+            "json",
+            "md",
+            "graphql", "gql",
+            "yaml", "yml",
+            "xml",
         ]
     }
 
