@@ -1,6 +1,9 @@
 import Foundation
 
 let utiToExtensionName = [
+    "com.apple.dt.swiftpm-package-manifest": "swift",
+    "com.apple.dt.playground": "swift",
+    "com.apple.dt.playgroundpage": "swift",
     "public.swift-source": "swift",
     "public.c-source": "c",
     "public.c-plus-plus-source": "cc",

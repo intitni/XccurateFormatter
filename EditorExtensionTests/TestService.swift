@@ -1,12 +1,12 @@
 import Foundation
 
 struct TestService {
-    func format(content: String, uti: String, projectPath: String?) throws -> String {
+    func format(content: String, uti: String, contentPath: String?) throws -> String {
         let service = Service()
         return try service.formatEditingFile(
             content: content,
             uti: uti,
-            contentURL: projectPath.flatMap {
+            contentURL: contentPath.flatMap {
                 URL(filePath: $0)
             }
         )

@@ -31,7 +31,7 @@ final class ClangFormatTests: XCTestCase {
                        int        number =     20;
                 """,
                 uti: "public.c-source",
-                projectPath: nil
+                contentPath: nil
             )
             XCTFail("Error expected")
         } catch {
@@ -48,7 +48,7 @@ final class ClangFormatTests: XCTestCase {
             }
             """,
             uti: "public.c-source",
-            projectPath: nil
+            contentPath: nil
         )
         XCTAssertEqual(
             result,
@@ -95,7 +95,7 @@ final class ClangFormatTests: XCTestCase {
             }
             """,
             uti: "public.c-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,
@@ -137,7 +137,7 @@ final class ClangFormatTests: XCTestCase {
             }
             """,
             uti: "public.c-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,
@@ -180,7 +180,7 @@ final class ClangFormatTests: XCTestCase {
             }
             """,
             uti: "public.c-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,

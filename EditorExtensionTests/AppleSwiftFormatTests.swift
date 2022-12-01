@@ -26,7 +26,7 @@ final class AppleSwiftFormatTests: XCTestCase {
                        var        name = "dog"
                 """,
                 uti: "public.swift-source",
-                projectPath: nil
+                contentPath: nil
             )
             XCTFail("Error expected")
         } catch {
@@ -40,7 +40,7 @@ final class AppleSwiftFormatTests: XCTestCase {
                    var        name = "dog"
             """,
             uti: "public.swift-source",
-            projectPath: nil
+            contentPath: nil
         )
         XCTAssertEqual(
             result,
@@ -79,7 +79,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             }
             """,
             uti: "public.swift-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
         )
         XCTAssertEqual(
             result,
@@ -116,7 +116,58 @@ final class AppleSwiftFormatTests: XCTestCase {
                    var        name = "dog"
             """,
             uti: "public.swift-source",
-            projectPath: dirUrl.path
+            contentPath: dirUrl.path
+        )
+        XCTAssertEqual(
+            result,
+            """
+            var name = "dog"
+
+            """
+        )
+    }
+
+    func testFormatPlayground() throws {
+        let result = try TestService().format(
+            content: """
+                   var        name = "dog"
+            """,
+            uti: "com.apple.dt.playground",
+            contentPath: "/contents.xcplayground"
+        )
+        XCTAssertEqual(
+            result,
+            """
+            var name = "dog"
+
+            """
+        )
+    }
+
+    func testFormatPlaygroundPage() throws {
+        let result = try TestService().format(
+            content: """
+                   var        name = "dog"
+            """,
+            uti: "com.apple.dt.playgroundpage",
+            contentPath: "/contents.xcplaygroundpage"
+        )
+        XCTAssertEqual(
+            result,
+            """
+            var name = "dog"
+
+            """
+        )
+    }
+
+    func testFormatSwiftPackage() throws {
+        let result = try TestService().format(
+            content: """
+                   var        name = "dog"
+            """,
+            uti: "com.apple.dt.swiftpm-package-manifest",
+            contentPath: "/contents.xcplaygroundpage"
         )
         XCTAssertEqual(
             result,

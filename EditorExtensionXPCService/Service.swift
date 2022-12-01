@@ -20,13 +20,29 @@ enum ExtensionError: Swift.Error, LocalizedError {
 
 final class Service {
     func formatEditingFile(content: String, uti: String, contentURL: URL?) throws -> String {
-        let formatters: [any Formatter] = [
+        let fileExtension = contentURL?.pathExtension
+        let utiExtension = utiToExtensionName[uti]
+        let tempFileExtension: (any Formatter) -> String? = { formatter in
+            if let fileExtension,
+               !fileExtension.isEmpty,
+               formatter.supportedFileExtensions.contains(fileExtension) { return fileExtension }
+            return utiExtension
+        }
+        let formatters = [
             SwiftFormat(),
             AppleSwiftFormat(),
             ClangFormat(),
             Prettier(),
-        ].filter {
-            $0.supportedFileUTI.contains(uti)
+        ].filter { (formatter: any Formatter) in
+            if let fileExtension {
+                if formatter.supportedFileExtensions.contains(fileExtension) {
+                    return true
+                }
+            }
+            if let utiExtension {
+                return formatter.supportedFileExtensions.contains(utiExtension)
+            }
+            return false
         }
         if let contentURL {
             let (formatter, confURL, projectConfig, fileDirectory) = guessFormatter(
@@ -38,7 +54,7 @@ final class Service {
             }
             let result = try format(
                 content: content,
-                uti: uti,
+                fileExtension: tempFileExtension(formatter),
                 with: formatter,
                 confURL: confURL,
                 projectConfig: projectConfig,
@@ -53,7 +69,7 @@ final class Service {
             }
             let result = try format(
                 content: content,
-                uti: uti,
+                fileExtension: tempFileExtension(formatter),
                 with: formatter,
                 confURL: nil,
                 projectConfig: nil,
@@ -138,7 +154,7 @@ final class Service {
 
     func format(
         content: String,
-        uti: String,
+        fileExtension: String?,
         with formatter: any Formatter,
         confURL: URL?,
         projectConfig: ProjectConfig?,
@@ -146,7 +162,7 @@ final class Service {
     ) throws -> String {
         let data = content.data(using: .utf8)
         let tempDirectory = projectURL ?? FileManager.default.temporaryDirectory
-        let fileName = ".xccurate_formatter_\(UUID().uuidString).\(utiToExtensionName[uti] ?? "")"
+        let fileName = ".xccurate_formatter_\(UUID().uuidString).\(fileExtension ?? "")"
         let fileURL: URL
         if #available(macOS 13.0, *) {
             fileURL = tempDirectory.appending(component: fileName)

@@ -29,7 +29,7 @@ struct PrettierSettings: View {
                 .autocorrectionDisabled(true)
 
                 Text(
-                    "Optional. Used we you set `usePrettierFromNodeModule` to `true` in `.xccurateformatter`."
+                    "Optional. Used when you set `usePrettierFromNodeModule` to `true` in `.xccurateformatter`."
                 )
                 .font(.footnote)
                 .foregroundColor(Color(nsColor: .secondaryLabelColor))
