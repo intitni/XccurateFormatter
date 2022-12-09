@@ -1,0 +1,909 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C8253E122936F64B00E95CCA /* LaunchAgentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253E112936F64B00E95CCA /* LaunchAgentManager.swift */; };
+		C8253E1329372E1800E95CCA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F2611292F425E00C83434 /* main.swift */; };
+		C8253E1529373A8500E95CCA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253E1429373A8500E95CCA /* Service.swift */; };
+		C8253E1629373A8500E95CCA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8253E1429373A8500E95CCA /* Service.swift */; };
+		C8253E1729373DB000E95CCA /* EditorExtensionXPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F260F292F425E00C83434 /* EditorExtensionXPCService.swift */; };
+		C84B0A7D2936EFB600295D83 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29D9F292FAA4A00FF3F43 /* Settings.swift */; };
+		C84B0A7E2936EFB600295D83 /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F261B292F42C800C83434 /* ServiceDelegate.swift */; };
+		C84B0A7F2936EFB600295D83 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F2627292F5D4C00C83434 /* Formatters.swift */; };
+		C84B0A802936EFB600295D83 /* EditorExtensionXPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F260D292F425E00C83434 /* EditorExtensionXPCServiceProtocol.swift */; };
+		C84B0A812936EFB600295D83 /* UTIToExtensionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29D9C292F69A200FF3F43 /* UTIToExtensionName.swift */; };
+		C84B0A842936EFBC00295D83 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */; };
+		C84B0A852936F13700295D83 /* XccurateFormatterService in CopyFiles */ = {isa = PBXBuildFile; fileRef = C84B0A762936EF2000295D83 /* XccurateFormatterService */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C89A95FF2934A1AA00351C15 /* SwiftFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A95FE2934A1AA00351C15 /* SwiftFormatTests.swift */; };
+		C89A960B2934A6C700351C15 /* TestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A960A2934A6C700351C15 /* TestService.swift */; };
+		C89A960E2934AF8800351C15 /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A960D2934AF8800351C15 /* TestConfig.swift */; };
+		C89A96132934B1A300351C15 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */; };
+		C89A96172934B45200351C15 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29D9F292FAA4A00FF3F43 /* Settings.swift */; };
+		C89A96182934B45600351C15 /* EditorExtensionXPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F260D292F425E00C83434 /* EditorExtensionXPCServiceProtocol.swift */; };
+		C89A961A2934B45600351C15 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F2627292F5D4C00C83434 /* Formatters.swift */; };
+		C89A961B2934B45600351C15 /* UTIToExtensionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29D9C292F69A200FF3F43 /* UTIToExtensionName.swift */; };
+		C89A961D2934BB8C00351C15 /* ClangFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A961C2934BB8B00351C15 /* ClangFormatTests.swift */; };
+		C89A961F2934BBB400351C15 /* AppleSwiftFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A961E2934BBB400351C15 /* AppleSwiftFormatTests.swift */; };
+		C89A96212934BBB900351C15 /* PrettierFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A96202934BBB900351C15 /* PrettierFormatTests.swift */; };
+		C89A96232935AB0500351C15 /* FormatterDecisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A96222935AB0500351C15 /* FormatterDecisionTests.swift */; };
+		C89A96272935DB5100351C15 /* FormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F261D292F552600C83434 /* FormatterService.swift */; };
+		C89F25E1292F203300C83434 /* XccurateFormatterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F25E0292F203300C83434 /* XccurateFormatterApp.swift */; };
+		C89F25E3292F203300C83434 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F25E2292F203300C83434 /* ContentView.swift */; };
+		C89F25E5292F203400C83434 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89F25E4292F203400C83434 /* Assets.xcassets */; };
+		C89F25E8292F203400C83434 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89F25E7292F203400C83434 /* Preview Assets.xcassets */; };
+		C89F25F6292F420900C83434 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F25F5292F420900C83434 /* Cocoa.framework */; };
+		C89F25FB292F420900C83434 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F25FA292F420900C83434 /* SourceEditorExtension.swift */; };
+		C89F25FD292F420900C83434 /* FormatFileCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F25FC292F420900C83434 /* FormatFileCommand.swift */; };
+		C89F2602292F420900C83434 /* Xccurate Formatter.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C89F25F3292F420900C83434 /* Xccurate Formatter.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C89F261E292F552600C83434 /* FormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F261D292F552600C83434 /* FormatterService.swift */; };
+		C89F261F292F554500C83434 /* EditorExtensionXPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F260D292F425E00C83434 /* EditorExtensionXPCServiceProtocol.swift */; };
+		C89F2624292F59BE00C83434 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F25F7292F420900C83434 /* XcodeKit.framework */; };
+		C89F2625292F59BE00C83434 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C89F25F7292F420900C83434 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8A29DB02930637700FF3F43 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */; };
+		C8A29DB5293099F900FF3F43 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DB3293098F600FF3F43 /* Card.swift */; };
+		C8A29DB72930A02600FF3F43 /* SwiftFormatSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DB62930A02600FF3F43 /* SwiftFormatSettings.swift */; };
+		C8A29DB92930A06E00FF3F43 /* AppSwiftFormatSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DB82930A06E00FF3F43 /* AppSwiftFormatSettings.swift */; };
+		C8A29DBB2930A09B00FF3F43 /* ClangFormatSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DBA2930A09B00FF3F43 /* ClangFormatSettings.swift */; };
+		C8A29DBD2930A0C000FF3F43 /* PrettierSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DBC2930A0C000FF3F43 /* PrettierSettings.swift */; };
+		C8A29DBF2930A55100FF3F43 /* Cheatsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A29DBE2930A55100FF3F43 /* Cheatsheet.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C89A96032934A1BD00351C15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89F25D5292F203300C83434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C89F25DC292F203300C83434;
+			remoteInfo = XccurateFormatter;
+		};
+		C89F2600292F420900C83434 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89F25D5292F203300C83434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C89F25F2292F420900C83434;
+			remoteInfo = EditorExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C84B0A742936EF2000295D83 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		C871E3CC2936E64200740832 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				C84B0A852936F13700295D83 /* XccurateFormatterService in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89A96152934B40200351C15 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F2606292F420900C83434 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C89F2602292F420900C83434 /* Xccurate Formatter.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F2622292F579C00C83434 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F2626292F59BE00C83434 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C89F2625292F59BE00C83434 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C8253E112936F64B00E95CCA /* LaunchAgentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgentManager.swift; sourceTree = "<group>"; };
+		C8253E1429373A8500E95CCA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		C84B0A762936EF2000295D83 /* XccurateFormatterService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XccurateFormatterService; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89A95FC2934A1AA00351C15 /* EditorExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EditorExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89A95FE2934A1AA00351C15 /* SwiftFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormatTests.swift; sourceTree = "<group>"; };
+		C89A96052934A1F000351C15 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C89A960A2934A6C700351C15 /* TestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestService.swift; sourceTree = "<group>"; };
+		C89A960C2934AD6300351C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C89A960D2934AF8800351C15 /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		C89A961C2934BB8B00351C15 /* ClangFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClangFormatTests.swift; sourceTree = "<group>"; };
+		C89A961E2934BBB400351C15 /* AppleSwiftFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSwiftFormatTests.swift; sourceTree = "<group>"; };
+		C89A96202934BBB900351C15 /* PrettierFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettierFormatTests.swift; sourceTree = "<group>"; };
+		C89A96222935AB0500351C15 /* FormatterDecisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterDecisionTests.swift; sourceTree = "<group>"; };
+		C89F25DD292F203300C83434 /* XccurateFormatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XccurateFormatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89F25E0292F203300C83434 /* XccurateFormatterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XccurateFormatterApp.swift; sourceTree = "<group>"; };
+		C89F25E2292F203300C83434 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C89F25E4292F203400C83434 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C89F25E7292F203400C83434 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C89F25E9292F203400C83434 /* XccurateFormatter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XccurateFormatter.entitlements; sourceTree = "<group>"; };
+		C89F25F3292F420900C83434 /* Xccurate Formatter.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Xccurate Formatter.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89F25F5292F420900C83434 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C89F25F7292F420900C83434 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
+		C89F25FA292F420900C83434 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		C89F25FC292F420900C83434 /* FormatFileCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatFileCommand.swift; sourceTree = "<group>"; };
+		C89F25FE292F420900C83434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89F25FF292F420900C83434 /* EditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EditorExtension.entitlements; sourceTree = "<group>"; };
+		C89F260D292F425E00C83434 /* EditorExtensionXPCServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorExtensionXPCServiceProtocol.swift; sourceTree = "<group>"; };
+		C89F260F292F425E00C83434 /* EditorExtensionXPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorExtensionXPCService.swift; sourceTree = "<group>"; };
+		C89F2611292F425E00C83434 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C89F2613292F425E00C83434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89F261B292F42C800C83434 /* ServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
+		C89F261D292F552600C83434 /* FormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterService.swift; sourceTree = "<group>"; };
+		C89F2627292F5D4C00C83434 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		C8A29D9C292F69A200FF3F43 /* UTIToExtensionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTIToExtensionName.swift; sourceTree = "<group>"; };
+		C8A29D9E292F76DA00FF3F43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C8A29D9F292FAA4A00FF3F43 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C8A29DA22930520800FF3F43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKeys.swift; path = ../../../UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		C8A29DB3293098F600FF3F43 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		C8A29DB62930A02600FF3F43 /* SwiftFormatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormatSettings.swift; sourceTree = "<group>"; };
+		C8A29DB82930A06E00FF3F43 /* AppSwiftFormatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwiftFormatSettings.swift; sourceTree = "<group>"; };
+		C8A29DBA2930A09B00FF3F43 /* ClangFormatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClangFormatSettings.swift; sourceTree = "<group>"; };
+		C8A29DBC2930A0C000FF3F43 /* PrettierSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettierSettings.swift; sourceTree = "<group>"; };
+		C8A29DBE2930A55100FF3F43 /* Cheatsheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cheatsheet.swift; sourceTree = "<group>"; };
+		C8E3546F293656F7004437B5 /* EditorExtensionXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EditorExtensionXPCService.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C84B0A732936EF2000295D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89A95F92934A1AA00351C15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25DA292F203300C83434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25F0292F420900C83434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89F25F6292F420900C83434 /* Cocoa.framework in Frameworks */,
+				C89F2624292F59BE00C83434 /* XcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C89A95FD2934A1AA00351C15 /* EditorExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+				C89A960C2934AD6300351C15 /* Info.plist */,
+				C89A95FE2934A1AA00351C15 /* SwiftFormatTests.swift */,
+				C89A961C2934BB8B00351C15 /* ClangFormatTests.swift */,
+				C89A961E2934BBB400351C15 /* AppleSwiftFormatTests.swift */,
+				C89A96202934BBB900351C15 /* PrettierFormatTests.swift */,
+				C89A960A2934A6C700351C15 /* TestService.swift */,
+				C89A960D2934AF8800351C15 /* TestConfig.swift */,
+				C89A96222935AB0500351C15 /* FormatterDecisionTests.swift */,
+			);
+			path = EditorExtensionTests;
+			sourceTree = "<group>";
+		};
+		C89F25D4292F203300C83434 = {
+			isa = PBXGroup;
+			children = (
+				C89A96052934A1F000351C15 /* Config.xcconfig */,
+				C8A29DA22930520800FF3F43 /* README.md */,
+				C89F25DF292F203300C83434 /* XccurateFormatter */,
+				C89F25F9292F420900C83434 /* EditorExtension */,
+				C89F260C292F425E00C83434 /* EditorExtensionXPCService */,
+				C89A95FD2934A1AA00351C15 /* EditorExtensionTests */,
+				C89F25F4292F420900C83434 /* Frameworks */,
+				C89F25DE292F203300C83434 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C89F25DE292F203300C83434 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C89F25DD292F203300C83434 /* XccurateFormatter.app */,
+				C89F25F3292F420900C83434 /* Xccurate Formatter.appex */,
+				C89A95FC2934A1AA00351C15 /* EditorExtensionTests.xctest */,
+				C84B0A762936EF2000295D83 /* XccurateFormatterService */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C89F25DF292F203300C83434 /* XccurateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				C8A29D9E292F76DA00FF3F43 /* Info.plist */,
+				C89F25E0292F203300C83434 /* XccurateFormatterApp.swift */,
+				C89F25E2292F203300C83434 /* ContentView.swift */,
+				C8253E112936F64B00E95CCA /* LaunchAgentManager.swift */,
+				C8A29DBA2930A09B00FF3F43 /* ClangFormatSettings.swift */,
+				C8A29DBC2930A0C000FF3F43 /* PrettierSettings.swift */,
+				C8A29DB3293098F600FF3F43 /* Card.swift */,
+				C8A29DB62930A02600FF3F43 /* SwiftFormatSettings.swift */,
+				C8A29DBE2930A55100FF3F43 /* Cheatsheet.swift */,
+				C8A29DB82930A06E00FF3F43 /* AppSwiftFormatSettings.swift */,
+				C89F25E4292F203400C83434 /* Assets.xcassets */,
+				C89F25E9292F203400C83434 /* XccurateFormatter.entitlements */,
+				C89F25E6292F203400C83434 /* Preview Content */,
+				C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */,
+			);
+			path = XccurateFormatter;
+			sourceTree = "<group>";
+		};
+		C89F25E6292F203400C83434 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C89F25E7292F203400C83434 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C89F25F4292F420900C83434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C89F25F5292F420900C83434 /* Cocoa.framework */,
+				C89F25F7292F420900C83434 /* XcodeKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C89F25F9292F420900C83434 /* EditorExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C89F25FA292F420900C83434 /* SourceEditorExtension.swift */,
+				C89F25FC292F420900C83434 /* FormatFileCommand.swift */,
+				C89F25FE292F420900C83434 /* Info.plist */,
+				C89F25FF292F420900C83434 /* EditorExtension.entitlements */,
+				C89F261D292F552600C83434 /* FormatterService.swift */,
+			);
+			path = EditorExtension;
+			sourceTree = "<group>";
+		};
+		C89F260C292F425E00C83434 /* EditorExtensionXPCService */ = {
+			isa = PBXGroup;
+			children = (
+				C8E3546F293656F7004437B5 /* EditorExtensionXPCService.entitlements */,
+				C8A29D9F292FAA4A00FF3F43 /* Settings.swift */,
+				C89F260D292F425E00C83434 /* EditorExtensionXPCServiceProtocol.swift */,
+				C89F260F292F425E00C83434 /* EditorExtensionXPCService.swift */,
+				C8253E1429373A8500E95CCA /* Service.swift */,
+				C89F2627292F5D4C00C83434 /* Formatters.swift */,
+				C8A29D9C292F69A200FF3F43 /* UTIToExtensionName.swift */,
+				C89F2611292F425E00C83434 /* main.swift */,
+				C89F261B292F42C800C83434 /* ServiceDelegate.swift */,
+				C89F2613292F425E00C83434 /* Info.plist */,
+			);
+			path = EditorExtensionXPCService;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C84B0A752936EF2000295D83 /* EditorExtensionXPCCLI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C84B0A7A2936EF2000295D83 /* Build configuration list for PBXNativeTarget "EditorExtensionXPCCLI" */;
+			buildPhases = (
+				C84B0A722936EF2000295D83 /* Sources */,
+				C84B0A732936EF2000295D83 /* Frameworks */,
+				C84B0A742936EF2000295D83 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EditorExtensionXPCCLI;
+			productName = EditorExtensionXPCCLI;
+			productReference = C84B0A762936EF2000295D83 /* XccurateFormatterService */;
+			productType = "com.apple.product-type.tool";
+		};
+		C89A95FB2934A1AA00351C15 /* EditorExtensionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89A96022934A1AA00351C15 /* Build configuration list for PBXNativeTarget "EditorExtensionTests" */;
+			buildPhases = (
+				C89A95F82934A1AA00351C15 /* Sources */,
+				C89A95F92934A1AA00351C15 /* Frameworks */,
+				C89A95FA2934A1AA00351C15 /* Resources */,
+				C89A96152934B40200351C15 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C89A96042934A1BD00351C15 /* PBXTargetDependency */,
+			);
+			name = EditorExtensionTests;
+			productName = EditorExtensionTests;
+			productReference = C89A95FC2934A1AA00351C15 /* EditorExtensionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C89F25DC292F203300C83434 /* XccurateFormatter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89F25EC292F203400C83434 /* Build configuration list for PBXNativeTarget "XccurateFormatter" */;
+			buildPhases = (
+				C89F25D9292F203300C83434 /* Sources */,
+				C89F25DA292F203300C83434 /* Frameworks */,
+				C871E3CC2936E64200740832 /* CopyFiles */,
+				C89F25DB292F203300C83434 /* Resources */,
+				C89F2606292F420900C83434 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C89F2601292F420900C83434 /* PBXTargetDependency */,
+			);
+			name = XccurateFormatter;
+			productName = XccurateFormatter;
+			productReference = C89F25DD292F203300C83434 /* XccurateFormatter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C89F25F2292F420900C83434 /* EditorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89F2603292F420900C83434 /* Build configuration list for PBXNativeTarget "EditorExtension" */;
+			buildPhases = (
+				C89F25EF292F420900C83434 /* Sources */,
+				C89F25F0292F420900C83434 /* Frameworks */,
+				C89F25F1292F420900C83434 /* Resources */,
+				C89F2622292F579C00C83434 /* CopyFiles */,
+				C89F2626292F59BE00C83434 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EditorExtension;
+			productName = EditorExtension;
+			productReference = C89F25F3292F420900C83434 /* Xccurate Formatter.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C89F25D5292F203300C83434 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					C84B0A752936EF2000295D83 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					C89A95FB2934A1AA00351C15 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					C89F25DC292F203300C83434 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					C89F25F2292F420900C83434 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = C89F25D8292F203300C83434 /* Build configuration list for PBXProject "XccurateFormatter" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C89F25D4292F203300C83434;
+			productRefGroup = C89F25DE292F203300C83434 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C89F25DC292F203300C83434 /* XccurateFormatter */,
+				C89F25F2292F420900C83434 /* EditorExtension */,
+				C89A95FB2934A1AA00351C15 /* EditorExtensionTests */,
+				C84B0A752936EF2000295D83 /* EditorExtensionXPCCLI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C89A95FA2934A1AA00351C15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25DB292F203300C83434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89F25E8292F203400C83434 /* Preview Assets.xcassets in Resources */,
+				C89F25E5292F203400C83434 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25F1292F420900C83434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C84B0A722936EF2000295D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84B0A802936EFB600295D83 /* EditorExtensionXPCServiceProtocol.swift in Sources */,
+				C8253E1329372E1800E95CCA /* main.swift in Sources */,
+				C84B0A7D2936EFB600295D83 /* Settings.swift in Sources */,
+				C84B0A842936EFBC00295D83 /* UserDefaultsKeys.swift in Sources */,
+				C8253E1729373DB000E95CCA /* EditorExtensionXPCService.swift in Sources */,
+				C8253E1629373A8500E95CCA /* Service.swift in Sources */,
+				C84B0A7E2936EFB600295D83 /* ServiceDelegate.swift in Sources */,
+				C84B0A7F2936EFB600295D83 /* Formatters.swift in Sources */,
+				C84B0A812936EFB600295D83 /* UTIToExtensionName.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89A95F82934A1AA00351C15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89A95FF2934A1AA00351C15 /* SwiftFormatTests.swift in Sources */,
+				C89A961B2934B45600351C15 /* UTIToExtensionName.swift in Sources */,
+				C8253E1529373A8500E95CCA /* Service.swift in Sources */,
+				C89A961F2934BBB400351C15 /* AppleSwiftFormatTests.swift in Sources */,
+				C89A96272935DB5100351C15 /* FormatterService.swift in Sources */,
+				C89A960B2934A6C700351C15 /* TestService.swift in Sources */,
+				C89A961A2934B45600351C15 /* Formatters.swift in Sources */,
+				C89A96212934BBB900351C15 /* PrettierFormatTests.swift in Sources */,
+				C89A96232935AB0500351C15 /* FormatterDecisionTests.swift in Sources */,
+				C89A96182934B45600351C15 /* EditorExtensionXPCServiceProtocol.swift in Sources */,
+				C89A961D2934BB8C00351C15 /* ClangFormatTests.swift in Sources */,
+				C89A96132934B1A300351C15 /* UserDefaultsKeys.swift in Sources */,
+				C89A960E2934AF8800351C15 /* TestConfig.swift in Sources */,
+				C89A96172934B45200351C15 /* Settings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25D9292F203300C83434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8A29DB72930A02600FF3F43 /* SwiftFormatSettings.swift in Sources */,
+				C8A29DBD2930A0C000FF3F43 /* PrettierSettings.swift in Sources */,
+				C89F25E3292F203300C83434 /* ContentView.swift in Sources */,
+				C8A29DBB2930A09B00FF3F43 /* ClangFormatSettings.swift in Sources */,
+				C8A29DB02930637700FF3F43 /* UserDefaultsKeys.swift in Sources */,
+				C8A29DBF2930A55100FF3F43 /* Cheatsheet.swift in Sources */,
+				C89F25E1292F203300C83434 /* XccurateFormatterApp.swift in Sources */,
+				C8A29DB5293099F900FF3F43 /* Card.swift in Sources */,
+				C8253E122936F64B00E95CCA /* LaunchAgentManager.swift in Sources */,
+				C8A29DB92930A06E00FF3F43 /* AppSwiftFormatSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89F25EF292F420900C83434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89F261F292F554500C83434 /* EditorExtensionXPCServiceProtocol.swift in Sources */,
+				C89F261E292F552600C83434 /* FormatterService.swift in Sources */,
+				C89F25FB292F420900C83434 /* SourceEditorExtension.swift in Sources */,
+				C89F25FD292F420900C83434 /* FormatFileCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C89A96042934A1BD00351C15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C89F25DC292F203300C83434 /* XccurateFormatter */;
+			targetProxy = C89A96032934A1BD00351C15 /* PBXContainerItemProxy */;
+		};
+		C89F2601292F420900C83434 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C89F25F2292F420900C83434 /* EditorExtension */;
+			targetProxy = C89F2600292F420900C83434 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C84B0A7B2936EF2000295D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorExtensionXPCService/EditorExtensionXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = EditorExtensionXPCService/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = XccurateFormatterService;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C84B0A7C2936EF2000295D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorExtensionXPCService/EditorExtensionXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = EditorExtensionXPCService/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = XccurateFormatterService;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C89A96002934A1AA00351C15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EditorExtensionTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).EditorExtensionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C89A96012934A1AA00351C15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EditorExtensionTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).EditorExtensionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C89F25EA292F203400C83434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C89F25EB292F203400C83434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C89F25ED292F203400C83434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XccurateFormatter/XccurateFormatter.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 24;
+				DEVELOPMENT_ASSET_PATHS = "\"XccurateFormatter/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XccurateFormatter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C89F25EE292F203400C83434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = XccurateFormatter/XccurateFormatter.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 24;
+				DEVELOPMENT_ASSET_PATHS = "\"XccurateFormatter/Preview Content\"";
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XccurateFormatter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C89F2604292F420900C83434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorExtension/EditorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EditorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).EditorExtension";
+				PRODUCT_NAME = "Xccurate Formatter";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C89F2605292F420900C83434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EditorExtension/EditorExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EditorExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE).EditorExtension";
+				PRODUCT_NAME = "Xccurate Formatter";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C84B0A7A2936EF2000295D83 /* Build configuration list for PBXNativeTarget "EditorExtensionXPCCLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C84B0A7B2936EF2000295D83 /* Debug */,
+				C84B0A7C2936EF2000295D83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89A96022934A1AA00351C15 /* Build configuration list for PBXNativeTarget "EditorExtensionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89A96002934A1AA00351C15 /* Debug */,
+				C89A96012934A1AA00351C15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89F25D8292F203300C83434 /* Build configuration list for PBXProject "XccurateFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89F25EA292F203400C83434 /* Debug */,
+				C89F25EB292F203400C83434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89F25EC292F203400C83434 /* Build configuration list for PBXNativeTarget "XccurateFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89F25ED292F203400C83434 /* Debug */,
+				C89F25EE292F203400C83434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89F2603292F420900C83434 /* Build configuration list for PBXNativeTarget "EditorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89F2604292F420900C83434 /* Debug */,
+				C89F2605292F420900C83434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C89F25D5292F203300C83434 /* Project object */;
+}
