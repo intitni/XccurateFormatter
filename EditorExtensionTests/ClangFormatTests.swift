@@ -22,11 +22,11 @@ final class ClangFormatTests: XCTestCase {
         UserDefaults().removePersistentDomain(forName: suiteName)
     }
 
-    func testNoLuanchPathSet() throws {
+    func testNoLuanchPathSet() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultClangFormatExecutablePath)
 
         do {
-            _ = try TestService().format(
+            _ = try await TestService().format(
                 content: """
                        int        number =     20;
                 """,
@@ -39,8 +39,8 @@ final class ClangFormatTests: XCTestCase {
         }
     }
 
-    func testFormatWithDefaultExecutablePath() throws {
-        let result = try TestService().format(
+    func testFormatWithDefaultExecutablePath() async throws {
+        let result = try await TestService().format(
             content: """
             int main() {
                 printf("Hello, World!");
@@ -61,7 +61,7 @@ final class ClangFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomConfiguration_IgnoreCustomStyle() throws {
+    func testFormatWithCustomConfiguration_IgnoreCustomStyle() async throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -86,7 +86,7 @@ final class ClangFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: xconfig.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             #include <stdio.h>
             int main() {
@@ -109,7 +109,7 @@ final class ClangFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomExecutablePath() throws {
+    func testFormatWithCustomExecutablePath() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultClangFormatExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -128,7 +128,7 @@ final class ClangFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: xconfig.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             #include <stdio.h>
             int main() {
@@ -151,7 +151,7 @@ final class ClangFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomStyle() throws {
+    func testFormatWithCustomStyle() async throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -171,7 +171,7 @@ final class ClangFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: xconfig.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             #include <stdio.h>
             int main() {

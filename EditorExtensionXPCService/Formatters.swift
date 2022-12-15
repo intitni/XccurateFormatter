@@ -18,7 +18,7 @@ protocol Formatter {
         currentDirectoryURL: URL?,
         confURL: URL?,
         projectConfig: ProjectConfig?
-    ) throws
+    ) async throws
     func hasValidExecutablePath(projectConfiguration: ProjectConfig?) -> Bool
 }
 
@@ -35,10 +35,10 @@ struct SwiftFormat: Formatter {
         currentDirectoryURL: URL?,
         confURL _: URL?,
         projectConfig: ProjectConfig?
-    ) throws {
+    ) async throws {
         guard let executablePath = projectConfig?.swiftFormatExecutablePath ?? executablePath
         else { throw ExtensionError.other("SwiftFormat executable path not set.") }
-        try runCommand(
+        try await runCommand(
             from: executablePath,
             currentDirectoryURL: currentDirectoryURL,
             args: file.path
@@ -63,10 +63,10 @@ struct AppleSwiftFormat: Formatter {
         currentDirectoryURL: URL?,
         confURL _: URL?,
         projectConfig: ProjectConfig?
-    ) throws {
+    ) async throws {
         guard let executablePath = projectConfig?.appleSwiftFormatExecutablePath ?? executablePath
         else { throw ExtensionError.other("swift-format executable path not set.") }
-        try runCommand(
+        try await runCommand(
             from: executablePath,
             currentDirectoryURL: currentDirectoryURL,
             args: "-i",
@@ -105,14 +105,14 @@ struct ClangFormat: Formatter {
         currentDirectoryURL: URL?,
         confURL: URL?,
         projectConfig: ProjectConfig?
-    ) throws {
+    ) async throws {
         guard let executablePath = projectConfig?.clangFormatExecutablePath ?? executablePath
         else { throw ExtensionError.other("ClangFormat executable path not set.") }
         var style = projectConfig?.clangFormatStyle ?? Settings.defaultClangFormatStyle ?? "LLVM"
         if confURL != nil {
             style = "file"
         }
-        try runCommand(
+        try await runCommand(
             from: executablePath, currentDirectoryURL: currentDirectoryURL,
             args: "-style=\(style)", "-i", file.path
         )
@@ -153,13 +153,13 @@ struct Prettier: Formatter {
         currentDirectoryURL: URL?,
         confURL _: URL?,
         projectConfig: ProjectConfig?
-    ) throws {
+    ) async throws {
         if let usePrettierFromNodeModules = projectConfig?.usePrettierFromNodeModules,
            usePrettierFromNodeModules
         {
             guard let executablePath = Settings.defaultNPXExecutablePath
             else { throw ExtensionError.other("NPX executable path not set.") }
-            try runCommand(
+            try await runCommand(
                 from: "/usr/bin/env",
                 currentDirectoryURL: currentDirectoryURL,
                 args: executablePath, "prettier", "--write", file.path
@@ -167,7 +167,7 @@ struct Prettier: Formatter {
         } else {
             guard let executablePath = projectConfig?.prettierExecutablePath ?? executablePath
             else { throw ExtensionError.other("Prettier executable path not set.") }
-            try runCommand(
+            try await runCommand(
                 from: "/usr/bin/env",
                 currentDirectoryURL: currentDirectoryURL,
                 args: executablePath, "--write", file.path
@@ -191,27 +191,34 @@ private func runCommand(
     from executablePath: String,
     currentDirectoryURL: URL?,
     args: String...
-) throws -> String {
-    let task = Process()
-    task.launchPath = executablePath
-    task.arguments = args
-    task.currentDirectoryURL = currentDirectoryURL
-    task.environment = [
-        "PATH": Settings.envPath,
-    ]
-    let outpipe = Pipe()
-    task.standardOutput = outpipe
-    try task.run()
-    task.waitUntilExit()
-    if let data = try outpipe.fileHandleForReading.readToEnd(),
-       let text = String(data: data, encoding: .utf8)
-    {
-        if task.terminationStatus == 0 {
-            return text
-        } else {
-            throw ExtensionError.other(text)
+) async throws -> String {
+    try await withUnsafeThrowingContinuation { continuation in
+        do {
+            let task = Process()
+            task.launchPath = executablePath
+            task.arguments = args
+            task.currentDirectoryURL = currentDirectoryURL
+            task.environment = [
+                "PATH": Settings.envPath,
+            ]
+            let outpipe = Pipe()
+            task.standardOutput = outpipe
+            task.terminationHandler = { task in
+                if let data = try? outpipe.fileHandleForReading.readToEnd(),
+                   let text = String(data: data, encoding: .utf8)
+                {
+                    if task.terminationStatus == 0 {
+                        continuation.resume(returning: text)
+                    } else {
+                        continuation.resume(throwing: ExtensionError.other(text))
+                    }
+                } else {
+                    continuation.resume(returning: "")
+                }
+            }
+            try task.run()
+        } catch {
+            continuation.resume(throwing: error)
         }
     }
-
-    return ""
 }

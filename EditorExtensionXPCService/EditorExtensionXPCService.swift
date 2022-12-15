@@ -7,23 +7,25 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
         uti: String,
         withReply reply: @escaping (String?, Error?) -> Void
     ) {
-        do {
-            let contentURL = try getXcodeEditingContentURL()
-            let result = try Service().formatEditingFile(
-                content: content,
-                uti: uti,
-                contentURL: contentURL
-            )
-            reply(result, nil)
-        } catch {
-            let nserror = NSError(domain: "com.intii.XccurateFormatter", code: -1, userInfo: [
-                NSLocalizedDescriptionKey: error.localizedDescription,
-            ])
-            reply(nil, nserror)
-            #if DEBUG
-            print(error)
-            Thread.callStackSymbols.forEach { print($0) }
-            #endif
+        Task {
+            do {
+                let contentURL = try getXcodeEditingContentURL()
+                let result = try await Service().formatEditingFile(
+                    content: content,
+                    uti: uti,
+                    contentURL: contentURL
+                )
+                reply(result, nil)
+            } catch {
+                let nserror = NSError(domain: "com.intii.XccurateFormatter", code: -1, userInfo: [
+                    NSLocalizedDescriptionKey: error.localizedDescription,
+                ])
+                reply(nil, nserror)
+#if DEBUG
+                print(error)
+                Thread.callStackSymbols.forEach { print($0) }
+#endif
+            }
         }
     }
 

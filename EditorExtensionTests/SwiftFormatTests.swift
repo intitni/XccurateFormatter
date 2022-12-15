@@ -18,10 +18,10 @@ final class SwiftFormatTests: XCTestCase {
         UserDefaults().removePersistentDomain(forName: suiteName)
     }
 
-    func testNoExecutablePathSet() throws {
+    func testNoExecutablePathSet() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultSwiftFormatExecutablePath)
         do {
-            _ = try TestService().format(
+            _ = try await TestService().format(
                 content: """
                        var        name = "dog"
                 """,
@@ -34,8 +34,8 @@ final class SwiftFormatTests: XCTestCase {
         }
     }
 
-    func testFormatWithDefaultExecutablePath() throws {
-        let result = try TestService().format(
+    func testFormatWithDefaultExecutablePath() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -51,7 +51,7 @@ final class SwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomConfiguration() throws {
+    func testFormatWithCustomConfiguration() async throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -67,7 +67,7 @@ final class SwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".swiftformat").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             struct Cat {
               var name = "Dog"
@@ -87,7 +87,7 @@ final class SwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomExecutablePath() throws {
+    func testFormatWithCustomExecutablePath() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultSwiftFormatExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -106,7 +106,7 @@ final class SwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -122,8 +122,8 @@ final class SwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatPlayground() throws {
-        let result = try TestService().format(
+    func testFormatPlayground() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -139,8 +139,8 @@ final class SwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatPlaygroundPage() throws {
-        let result = try TestService().format(
+    func testFormatPlaygroundPage() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -156,8 +156,8 @@ final class SwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatSwiftPackage() throws {
-        let result = try TestService().format(
+    func testFormatSwiftPackage() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,

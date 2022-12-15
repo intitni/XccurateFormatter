@@ -13,7 +13,7 @@ final class FormatterDecisionTests: XCTestCase {
     }
 
     func testIf2FormattersSupportTheSameLanguagePickTheOneThatHasAConfigurationFileCloserToTheProjectDirectory(
-    ) throws {
+    ) async throws {
         Settings.storage.set(
             TestConfig.swiftFormatExecutablePath,
             forKey: SettingsKey.defaultSwiftFormatExecutablePath
@@ -51,7 +51,7 @@ final class FormatterDecisionTests: XCTestCase {
             atPath: secondaryDirURL.appending(component: ".swift-format").path,
             contents: configAppleSwiftFormat.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             struct Cat {
               var name = "Dog"
