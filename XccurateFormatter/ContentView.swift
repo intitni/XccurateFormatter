@@ -6,6 +6,7 @@ struct ContentView: View {
     var defaultSwiftFormatExecutablePath = ""
     @State var isDidSetupLaunchAgentAlertPresented = false
     @State var isDidRemoveLaunchAgentAlertPresented = false
+    @State var isDidRestartLaunchAgentAlertPresented = false
     @State var errorMessage: String?
 
     var body: some View {
@@ -52,6 +53,18 @@ struct ContentView: View {
                             dismissButton: .default(Text("OK"))
                         )
                     }
+                    
+                    Button(action: {
+                        LaunchAgentManager().restartLaunchAgent()
+                        isDidRestartLaunchAgentAlertPresented = true
+                    }) {
+                        Text("Restart XPC Service")
+                    }.alert(isPresented: $isDidRestartLaunchAgentAlertPresented) {
+                        .init(
+                            title: Text("Launch Agent Restarted"),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
 
                     EmptyView()
                         .alert(isPresented: .init(
@@ -71,6 +84,8 @@ struct ContentView: View {
                 AppleSwiftFormatSettings()
                 ClangFormatSettings()
                 PrettierSettings()
+                
+                Spacer()
             }
             .padding()
         }
@@ -91,5 +106,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .frame(height: 800)
     }
 }
