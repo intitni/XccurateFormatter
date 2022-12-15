@@ -54,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C885C0CC294AAEE300D5738C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89F25D5292F203300C83434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C84B0A752936EF2000295D83;
+			remoteInfo = EditorExtensionXPCCLI;
+		};
 		C89A96032934A1BD00351C15 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C89F25D5292F203300C83434 /* Project object */;
@@ -375,6 +382,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C885C0CD294AAEE300D5738C /* PBXTargetDependency */,
 				C89F2601292F420900C83434 /* PBXTargetDependency */,
 			);
 			name = XccurateFormatter;
@@ -541,6 +549,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C885C0CD294AAEE300D5738C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C84B0A752936EF2000295D83 /* EditorExtensionXPCCLI */;
+			targetProxy = C885C0CC294AAEE300D5738C /* PBXContainerItemProxy */;
+		};
 		C89A96042934A1BD00351C15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C89F25DC292F203300C83434 /* XccurateFormatter */;
