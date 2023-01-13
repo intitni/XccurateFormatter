@@ -28,7 +28,7 @@ enum Settings {
     }
 
     static var envPath: String {
-        return "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"
+        "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"
     }
 }
 

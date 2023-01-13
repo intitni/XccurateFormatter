@@ -16,7 +16,7 @@ func getService() throws -> EditorExtensionService {
 
 final class EditorExtensionService {
     var isInvalidated = false
-    
+
     lazy var connection: NSXPCConnection = {
         let connection = NSXPCConnection(
             machServiceName: Bundle(for: EditorExtensionService.self)
@@ -48,7 +48,7 @@ final class EditorExtensionService {
             completionHandler(.failure($0))
         } as! EditorExtensionXPCServiceProtocol
         service.formatEditingFile(content: content, uti: uti, withReply: { result, error in
-            if let error = error {
+            if let error {
                 completionHandler(.failure(error))
             } else {
                 completionHandler(.success(result ?? content))

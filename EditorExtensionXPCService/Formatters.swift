@@ -46,7 +46,7 @@ struct SwiftFormat: Formatter {
     }
 
     func hasValidExecutablePath(projectConfiguration: ProjectConfig?) -> Bool {
-        return (projectConfiguration?.swiftFormatExecutablePath ?? executablePath) != nil
+        (projectConfiguration?.swiftFormatExecutablePath ?? executablePath) != nil
     }
 }
 
@@ -75,7 +75,7 @@ struct AppleSwiftFormat: Formatter {
     }
 
     func hasValidExecutablePath(projectConfiguration: ProjectConfig?) -> Bool {
-        return (projectConfiguration?.appleSwiftFormatExecutablePath ?? executablePath) != nil
+        (projectConfiguration?.appleSwiftFormatExecutablePath ?? executablePath) != nil
     }
 }
 
@@ -119,7 +119,7 @@ struct ClangFormat: Formatter {
     }
 
     func hasValidExecutablePath(projectConfiguration: ProjectConfig?) -> Bool {
-        return (projectConfiguration?.clangFormatExecutablePath ?? executablePath) != nil
+        (projectConfiguration?.clangFormatExecutablePath ?? executablePath) != nil
     }
 }
 

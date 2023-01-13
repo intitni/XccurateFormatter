@@ -21,10 +21,10 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
                     NSLocalizedDescriptionKey: error.localizedDescription,
                 ])
                 reply(nil, nserror)
-#if DEBUG
+                #if DEBUG
                 print(error)
                 Thread.callStackSymbols.forEach { print($0) }
-#endif
+                #endif
             }
         }
     }

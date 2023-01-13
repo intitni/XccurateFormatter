@@ -53,7 +53,7 @@ struct ContentView: View {
                             dismissButton: .default(Text("OK"))
                         )
                     }
-                    
+
                     Button(action: {
                         LaunchAgentManager().restartLaunchAgent()
                         isDidRestartLaunchAgentAlertPresented = true
@@ -84,7 +84,7 @@ struct ContentView: View {
                 AppleSwiftFormatSettings()
                 ClangFormatSettings()
                 PrettierSettings()
-                
+
                 Spacer()
             }
             .padding()
