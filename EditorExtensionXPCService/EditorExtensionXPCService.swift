@@ -9,7 +9,7 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
     ) {
         Task {
             do {
-                let contentURL = try getXcodeEditingContentURL()
+                let contentURL = try await getXcodeEditingContentURL()
                 let result = try await Service().formatEditingFile(
                     content: content,
                     uti: uti,
@@ -29,10 +29,20 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
         }
     }
 
-    func getXcodeEditingContentURL() throws -> URL? {
-        let activeXcodes = NSRunningApplication
-            .runningApplications(withBundleIdentifier: "com.apple.dt.Xcode")
-            .filter(\.isActive)
+    func getXcodeEditingContentURL() async throws -> URL? {
+        var activeXcodes = [NSRunningApplication]()
+        var retryCount = 0
+        // Sometimes runningApplications returns 0 items.
+        while activeXcodes.isEmpty, retryCount < 5 {
+            activeXcodes = NSRunningApplication
+                .runningApplications(withBundleIdentifier: "com.apple.dt.Xcode")
+                .sorted { lhs, _ in
+                    if lhs.isActive { return true }
+                    return false
+                }
+            if retryCount > 0 { try await Task.sleep(nanoseconds: 10_000_000) }
+            retryCount += 1
+        }
 
         // fetch file path of the frontmost window of Xcode through Accessability API.
         for xcode in activeXcodes {
@@ -42,11 +52,28 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
                     key: kAXFocusedWindowAttribute,
                     ofType: AXUIElement.self
                 )
-                let path = try frontmostWindow.copyValue(
+                var path = try frontmostWindow.copyValue(
                     key: kAXDocumentAttribute,
-                    ofType: String.self
+                    ofType: String?.self
                 )
-                return URL(fileURLWithPath: path)
+                if path == nil {
+                    if let firstWindow = try application.copyValue(
+                        key: kAXWindowsAttribute,
+                        ofType: [AXUIElement].self
+                    ).first {
+                        path = try firstWindow.copyValue(
+                            key: kAXDocumentAttribute,
+                            ofType: String.self
+                        )
+                    }
+                }
+                if let path = path?.removingPercentEncoding {
+                    let url = URL(
+                        fileURLWithPath: path
+                            .replacingOccurrences(of: "file://", with: "")
+                    )
+                    return url
+                }
             } catch {
                 if let axError = error as? AXError, axError == .apiDisabled {
                     throw ExtensionError.noAccessToAccessibilityAPI
