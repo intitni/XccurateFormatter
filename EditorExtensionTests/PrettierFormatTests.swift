@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import EditorExtensionXPCService
-
 final class PrettierTests: XCTestCase {
     let suiteName = "XccurateFormatterPrettierTests"
 

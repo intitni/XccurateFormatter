@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import EditorExtensionXPCService
-
 final class ClangFormatTests: XCTestCase {
     let suiteName = "XccurateFormatterClangFormatTests"
 

@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import EditorExtensionXPCService
-
 final class AppleSwiftFormatTests: XCTestCase {
     let suiteName = "XccurateFormatterAppleSwiftFormatTests"
 
