@@ -58,6 +58,11 @@ struct LaunchAgentManager {
         launchctl("unload", launchAgentPath)
         try FileManager.default.removeItem(atPath: launchAgentPath)
     }
+
+    func restartLaunchAgent() {
+        launchctl("unload", launchAgentPath)
+        launchctl("load", launchAgentPath)
+    }
 }
 
 private func launchctl(_ args: String...) {
@@ -67,13 +72,5 @@ private func launchctl(_ args: String...) {
     task.environment = [
         "PATH": "/usr/bin",
     ]
-    let outpipe = Pipe()
-    task.standardOutput = outpipe
     try? task.run()
-    task.waitUntilExit()
-    if let data = try? outpipe.fileHandleForReading.readToEnd(),
-       let text = String(data: data, encoding: .utf8)
-    {
-        print(text)
-    }
 }

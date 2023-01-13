@@ -54,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C885C0CC294AAEE300D5738C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89F25D5292F203300C83434 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C84B0A752936EF2000295D83;
+			remoteInfo = EditorExtensionXPCCLI;
+		};
 		C89A96032934A1BD00351C15 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C89F25D5292F203300C83434 /* Project object */;
@@ -137,6 +144,7 @@
 		C8253E1429373A8500E95CCA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C84B0A762936EF2000295D83 /* XccurateFormatterService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XccurateFormatterService; sourceTree = BUILT_PRODUCTS_DIR; };
 		C888032929435AF6009EB4F4 /* Config.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.debug.xcconfig; sourceTree = "<group>"; };
+		C88829A2297155120081869F /* Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
 		C89A95FC2934A1AA00351C15 /* EditorExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EditorExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89A95FE2934A1AA00351C15 /* SwiftFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormatTests.swift; sourceTree = "<group>"; };
 		C89A96052934A1F000351C15 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -236,6 +244,7 @@
 				C89A96052934A1F000351C15 /* Config.xcconfig */,
 				C888032929435AF6009EB4F4 /* Config.debug.xcconfig */,
 				C8A29DA22930520800FF3F43 /* README.md */,
+				C88829A2297155120081869F /* Test.xcconfig */,
 				C89F25DF292F203300C83434 /* XccurateFormatter */,
 				C89F25F9292F420900C83434 /* EditorExtension */,
 				C89F260C292F425E00C83434 /* EditorExtensionXPCService */,
@@ -375,6 +384,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C885C0CD294AAEE300D5738C /* PBXTargetDependency */,
 				C89F2601292F420900C83434 /* PBXTargetDependency */,
 			);
 			name = XccurateFormatter;
@@ -541,6 +551,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C885C0CD294AAEE300D5738C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C84B0A752936EF2000295D83 /* EditorExtensionXPCCLI */;
+			targetProxy = C885C0CC294AAEE300D5738C /* PBXContainerItemProxy */;
+		};
 		C89A96042934A1BD00351C15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C89F25DC292F203300C83434 /* XccurateFormatter */;
@@ -626,7 +641,7 @@
 		};
 		C89F25EA292F203400C83434 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
+			baseConfigurationReference = C888032929435AF6009EB4F4 /* Config.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -687,7 +702,7 @@
 		};
 		C89F25EB292F203400C83434 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C888032929435AF6009EB4F4 /* Config.debug.xcconfig */;
+			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -749,7 +764,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_ASSET_PATHS = "\"XccurateFormatter/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -763,7 +778,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -781,7 +796,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_ASSET_PATHS = "\"XccurateFormatter/Preview Content\"";
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -795,7 +810,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER_BASE)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -812,9 +827,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = EditorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -839,9 +854,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = EditorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,30 +7,42 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
         uti: String,
         withReply reply: @escaping (String?, Error?) -> Void
     ) {
-        do {
-            let contentURL = try getXcodeEditingContentURL()
-            let result = try Service().formatEditingFile(
-                content: content,
-                uti: uti,
-                contentURL: contentURL
-            )
-            reply(result, nil)
-        } catch {
-            let nserror = NSError(domain: "com.intii.XccurateFormatter", code: -1, userInfo: [
-                NSLocalizedDescriptionKey: error.localizedDescription,
-            ])
-            reply(nil, nserror)
-            #if DEBUG
-            print(error)
-            Thread.callStackSymbols.forEach { print($0) }
-            #endif
+        Task {
+            do {
+                let contentURL = try await getXcodeEditingContentURL()
+                let result = try await Service().formatEditingFile(
+                    content: content,
+                    uti: uti,
+                    contentURL: contentURL
+                )
+                reply(result, nil)
+            } catch {
+                let nserror = NSError(domain: "com.intii.XccurateFormatter", code: -1, userInfo: [
+                    NSLocalizedDescriptionKey: error.localizedDescription,
+                ])
+                reply(nil, nserror)
+                #if DEBUG
+                print(error)
+                Thread.callStackSymbols.forEach { print($0) }
+                #endif
+            }
         }
     }
 
-    func getXcodeEditingContentURL() throws -> URL? {
-        let activeXcodes = NSRunningApplication
-            .runningApplications(withBundleIdentifier: "com.apple.dt.Xcode")
-            .filter(\.isActive)
+    func getXcodeEditingContentURL() async throws -> URL? {
+        var activeXcodes = [NSRunningApplication]()
+        var retryCount = 0
+        // Sometimes runningApplications returns 0 items.
+        while activeXcodes.isEmpty, retryCount < 5 {
+            activeXcodes = NSRunningApplication
+                .runningApplications(withBundleIdentifier: "com.apple.dt.Xcode")
+                .sorted { lhs, _ in
+                    if lhs.isActive { return true }
+                    return false
+                }
+            if retryCount > 0 { try await Task.sleep(nanoseconds: 10_000_000) }
+            retryCount += 1
+        }
 
         // fetch file path of the frontmost window of Xcode through Accessability API.
         for xcode in activeXcodes {
@@ -40,11 +52,28 @@ class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
                     key: kAXFocusedWindowAttribute,
                     ofType: AXUIElement.self
                 )
-                let path = try frontmostWindow.copyValue(
+                var path = try frontmostWindow.copyValue(
                     key: kAXDocumentAttribute,
-                    ofType: String.self
+                    ofType: String?.self
                 )
-                return URL(fileURLWithPath: path)
+                if path == nil {
+                    if let firstWindow = try application.copyValue(
+                        key: kAXWindowsAttribute,
+                        ofType: [AXUIElement].self
+                    ).first {
+                        path = try firstWindow.copyValue(
+                            key: kAXDocumentAttribute,
+                            ofType: String.self
+                        )
+                    }
+                }
+                if let path = path?.removingPercentEncoding {
+                    let url = URL(
+                        fileURLWithPath: path
+                            .replacingOccurrences(of: "file://", with: "")
+                    )
+                    return url
+                }
             } catch {
                 if let axError = error as? AXError, axError == .apiDisabled {
                     throw ExtensionError.noAccessToAccessibilityAPI

@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import EditorExtensionXPCService
-
 final class AppleSwiftFormatTests: XCTestCase {
     let suiteName = "XccurateFormatterAppleSwiftFormatTests"
 
@@ -18,10 +16,10 @@ final class AppleSwiftFormatTests: XCTestCase {
         UserDefaults().removePersistentDomain(forName: suiteName)
     }
 
-    func testNoExecutablePathSet() throws {
+    func testNoExecutablePathSet() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultAppleSwiftFormatExecutablePath)
         do {
-            _ = try TestService().format(
+            _ = try await TestService().format(
                 content: """
                        var        name = "dog"
                 """,
@@ -34,8 +32,8 @@ final class AppleSwiftFormatTests: XCTestCase {
         }
     }
 
-    func testFormatWithDefaultExecutablePath() throws {
-        let result = try TestService().format(
+    func testFormatWithDefaultExecutablePath() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -51,7 +49,7 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomConfiguration() throws {
+    func testFormatWithCustomConfiguration() async throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -72,7 +70,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".swift-format").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             struct Cat {
               var name = "Dog"
@@ -92,7 +90,7 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomExecutablePath() throws {
+    func testFormatWithCustomExecutablePath() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultAppleSwiftFormatExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -111,7 +109,7 @@ final class AppleSwiftFormatTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -127,8 +125,8 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatPlayground() throws {
-        let result = try TestService().format(
+    func testFormatPlayground() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -144,8 +142,8 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatPlaygroundPage() throws {
-        let result = try TestService().format(
+    func testFormatPlaygroundPage() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,
@@ -161,8 +159,8 @@ final class AppleSwiftFormatTests: XCTestCase {
         )
     }
 
-    func testFormatSwiftPackage() throws {
-        let result = try TestService().format(
+    func testFormatSwiftPackage() async throws {
+        let result = try await TestService().format(
             content: """
                    var        name = "dog"
             """,

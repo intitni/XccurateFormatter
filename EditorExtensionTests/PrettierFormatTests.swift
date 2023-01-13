@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import EditorExtensionXPCService
-
 final class PrettierTests: XCTestCase {
     let suiteName = "XccurateFormatterPrettierTests"
 
@@ -22,10 +20,10 @@ final class PrettierTests: XCTestCase {
         UserDefaults().removePersistentDomain(forName: suiteName)
     }
 
-    func testNoExecutablePathSet() throws {
+    func testNoExecutablePathSet() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultPrettierExecutablePath)
         do {
-            _ = try TestService().format(
+            _ = try await TestService().format(
                 content: """
                              const        name       = "dog"
                 """,
@@ -38,8 +36,8 @@ final class PrettierTests: XCTestCase {
         }
     }
 
-    func testFormatWithDefaultExecutablePath() throws {
-        let result = try TestService().format(
+    func testFormatWithDefaultExecutablePath() async throws {
+        let result = try await TestService().format(
             content: """
                          const        name       = "dog"
             """,
@@ -55,7 +53,7 @@ final class PrettierTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomConfiguration() throws {
+    func testFormatWithCustomConfiguration() async throws {
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
         let folderName = "xccurate_formatter_\(UUID().uuidString)"
@@ -73,7 +71,7 @@ final class PrettierTests: XCTestCase {
             atPath: dirUrl.appending(component: ".prettierrc.json").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
             class Cat {
               name = "Dog";
@@ -93,7 +91,7 @@ final class PrettierTests: XCTestCase {
         )
     }
 
-    func testFormatWithCustomExecutablePath() throws {
+    func testFormatWithCustomExecutablePath() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultPrettierExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -112,7 +110,7 @@ final class PrettierTests: XCTestCase {
             atPath: dirUrl.appending(component: ".xccurateformatter").path,
             contents: config.data(using: .utf8)
         )
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
                          const        name       = "dog"
             """,
@@ -129,7 +127,7 @@ final class PrettierTests: XCTestCase {
     }
 
     /// Will fire up npm init and npm install to install Prettier locally.
-    func testFormatWithLocallyInstalledPrettier() throws {
+    func testFormatWithLocallyInstalledPrettier() async throws {
         Settings.storage.set("", forKey: SettingsKey.defaultPrettierExecutablePath)
         let f = FileManager.default
         let tempDir = f.temporaryDirectory
@@ -151,7 +149,7 @@ final class PrettierTests: XCTestCase {
         let npm = TestConfig.npxExecutablePath.replacing("npx", with: "npm")
         try runCommand(currentDirectoryURL: dirUrl, args: npm, "init", "--yes")
         try runCommand(currentDirectoryURL: dirUrl, args: npm, "install", "prettier")
-        let result = try TestService().format(
+        let result = try await TestService().format(
             content: """
                          const        name       = "dog"
             """,

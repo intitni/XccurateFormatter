@@ -1,8 +1,22 @@
 import Foundation
+import os.log
 
-let service = EditorExtensionService()
+private var shared = EditorExtensionService()
+
+func getService() throws -> EditorExtensionService {
+    if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+        struct RunningInPreview: Error {}
+        throw RunningInPreview()
+    }
+    if shared.isInvalidated {
+        shared = EditorExtensionService()
+    }
+    return shared
+}
 
 final class EditorExtensionService {
+    var isInvalidated = false
+
     lazy var connection: NSXPCConnection = {
         let connection = NSXPCConnection(
             machServiceName: Bundle(for: EditorExtensionService.self)
@@ -10,6 +24,13 @@ final class EditorExtensionService {
         )
         connection.remoteObjectInterface =
             NSXPCInterface(with: EditorExtensionXPCServiceProtocol.self)
+        connection.invalidationHandler = { [weak self] in
+            os_log(.info, "XPCService Invalidated")
+            self?.isInvalidated = true
+        }
+        connection.interruptionHandler = { [weak self] in
+            os_log(.info, "XPCService interrupted")
+        }
         connection.resume()
         return connection
     }()
@@ -27,7 +48,7 @@ final class EditorExtensionService {
             completionHandler(.failure($0))
         } as! EditorExtensionXPCServiceProtocol
         service.formatEditingFile(content: content, uti: uti, withReply: { result, error in
-            if let error = error {
+            if let error {
                 completionHandler(.failure(error))
             } else {
                 completionHandler(.success(result ?? content))

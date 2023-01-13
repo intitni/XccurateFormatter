@@ -19,7 +19,7 @@ enum ExtensionError: Swift.Error, LocalizedError {
 }
 
 final class Service {
-    func formatEditingFile(content: String, uti: String, contentURL: URL?) throws -> String {
+    func formatEditingFile(content: String, uti: String, contentURL: URL?) async throws -> String {
         let fileExtension = contentURL?.pathExtension
         let utiExtension = utiToExtensionName[uti]
         let tempFileExtension: (any Formatter) -> String? = { formatter in
@@ -52,7 +52,7 @@ final class Service {
             guard let formatter else {
                 throw ExtensionError.noSupportedFormatterFound(uti: uti)
             }
-            let result = try format(
+            let result = try await format(
                 content: content,
                 fileExtension: tempFileExtension(formatter),
                 with: formatter,
@@ -67,7 +67,7 @@ final class Service {
             }) else {
                 throw ExtensionError.noSupportedFormatterFound(uti: uti)
             }
-            let result = try format(
+            let result = try await format(
                 content: content,
                 fileExtension: tempFileExtension(formatter),
                 with: formatter,
@@ -159,7 +159,7 @@ final class Service {
         confURL: URL?,
         projectConfig: ProjectConfig?,
         in projectURL: URL?
-    ) throws -> String {
+    ) async throws -> String {
         let data = content.data(using: .utf8)
         let tempDirectory = projectURL ?? FileManager.default.temporaryDirectory
         let fileName = ".xccurate_formatter_\(UUID().uuidString).\(fileExtension ?? "")"
@@ -171,7 +171,7 @@ final class Service {
         }
         FileManager.default.createFile(atPath: fileURL.path, contents: data)
         defer { try? FileManager.default.removeItem(at: fileURL) }
-        try formatter.format(
+        try await formatter.format(
             file: fileURL,
             currentDirectoryURL: projectURL,
             confURL: confURL,

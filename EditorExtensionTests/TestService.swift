@@ -1,9 +1,9 @@
 import Foundation
 
 struct TestService {
-    func format(content: String, uti: String, contentPath: String?) throws -> String {
+    func format(content: String, uti: String, contentPath: String?) async throws -> String {
         let service = Service()
-        return try service.formatEditingFile(
+        return try await service.formatEditingFile(
             content: content,
             uti: uti,
             contentURL: contentPath.flatMap {

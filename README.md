@@ -70,17 +70,15 @@ Alternatively, you can add a file `.xccurateformatter` to the project root to ov
 
 All fields are optional.
 
+### Update
+
+After updating the app, please restart the XPC service manually.
+
 ### Configurations
 
 Place the formatter configuration files at the project root or its parent directories. Xccurate Formatter will use the nearest configuration it finds to determine which formatter to use.
 
 If no configuration is found, it will use the first formatter in the supported formatter list that supports the language and has its executable path set.
-
-## Limitations
-
-~~- Since Xcode only provides the UTI of the editing file but not the file extension, the formatter won't support files that Xcode doesn't know. e.g. even though `.graphql` is supported by Prettier, `.graphql` will be recognized as `public.plain-text` by Xcode.~~
-
-After switching to Accessibility API from Apple Script, it looks like we can now get the editing file path and the file extension, but I don't have time to update the code for that yet.
 
 ## How It Works
 
@@ -134,4 +132,4 @@ The test target doesn't have any host application, it just includes all the file
 To run the tests, you first need to:
 
 - install swift-format, SwiftFormat, ClangFormat, Node, Prettier.
-- provide their executable paths in `Config.debug.xcconfig`.
+- provide their executable paths in `Test.xcconfig`. Check `Test.sample.xcconfig` for requried fields.
