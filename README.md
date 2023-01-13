@@ -70,6 +70,10 @@ Alternatively, you can add a file `.xccurateformatter` to the project root to ov
 
 All fields are optional.
 
+### Update
+
+After updating the app, please restart the XPC service manually.
+
 ### Configurations
 
 Place the formatter configuration files at the project root or its parent directories. Xccurate Formatter will use the nearest configuration it finds to determine which formatter to use.
