@@ -144,6 +144,7 @@
 		C8253E1429373A8500E95CCA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C84B0A762936EF2000295D83 /* XccurateFormatterService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XccurateFormatterService; sourceTree = BUILT_PRODUCTS_DIR; };
 		C888032929435AF6009EB4F4 /* Config.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.debug.xcconfig; sourceTree = "<group>"; };
+		C88829A2297155120081869F /* Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
 		C89A95FC2934A1AA00351C15 /* EditorExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EditorExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89A95FE2934A1AA00351C15 /* SwiftFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormatTests.swift; sourceTree = "<group>"; };
 		C89A96052934A1F000351C15 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -243,6 +244,7 @@
 				C89A96052934A1F000351C15 /* Config.xcconfig */,
 				C888032929435AF6009EB4F4 /* Config.debug.xcconfig */,
 				C8A29DA22930520800FF3F43 /* README.md */,
+				C88829A2297155120081869F /* Test.xcconfig */,
 				C89F25DF292F203300C83434 /* XccurateFormatter */,
 				C89F25F9292F420900C83434 /* EditorExtension */,
 				C89F260C292F425E00C83434 /* EditorExtensionXPCService */,

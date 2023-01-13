@@ -134,4 +134,4 @@ The test target doesn't have any host application, it just includes all the file
 To run the tests, you first need to:
 
 - install swift-format, SwiftFormat, ClangFormat, Node, Prettier.
-- provide their executable paths in `Config.debug.xcconfig`.
+- provide their executable paths in `Test.xcconfig`.
