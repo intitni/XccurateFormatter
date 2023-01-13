@@ -639,7 +639,7 @@
 		};
 		C89F25EA292F203400C83434 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
+			baseConfigurationReference = C888032929435AF6009EB4F4 /* Config.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -700,7 +700,7 @@
 		};
 		C89F25EB292F203400C83434 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C888032929435AF6009EB4F4 /* Config.debug.xcconfig */;
+			baseConfigurationReference = C89A96052934A1F000351C15 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -825,9 +825,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = EditorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -852,9 +852,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YKZ4Y3DAW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = EditorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Xccurate Formatter";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

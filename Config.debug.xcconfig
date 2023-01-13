@@ -1,4 +1,5 @@
 BUNDLE_IDENTIFIER_BASE = debug.com.intii.XccurateFormatter
+EXTENSION_BUNDLE_NAME = Xccurate Formatter Dev
 
 // TEST
 
@@ -7,4 +8,3 @@ APPLE_SWIFT_FORMAT_EXECUTABLEPATH = /Users/intitni/developer/Projects/swift-form
 CLANG_FORMAT_EXECUTABLEPATH = /opt/homebrew/bin/clang-format
 NPX_EXECUTABLEPATH = /opt/homebrew/bin/npx
 PRETTIER_EXECUTABLEPATH = /opt/homebrew/bin/prettier
-
