@@ -76,12 +76,6 @@ Place the formatter configuration files at the project root or its parent direct
 
 If no configuration is found, it will use the first formatter in the supported formatter list that supports the language and has its executable path set.
 
-## Limitations
-
-~~- Since Xcode only provides the UTI of the editing file but not the file extension, the formatter won't support files that Xcode doesn't know. e.g. even though `.graphql` is supported by Prettier, `.graphql` will be recognized as `public.plain-text` by Xcode.~~
-
-After switching to Accessibility API from Apple Script, it looks like we can now get the editing file path and the file extension, but I don't have time to update the code for that yet.
-
 ## How It Works
 
 The source extension itself must be sandboxed, but it can still talk to XPC services that are not. That way, we can let the XPC service do the dirty work and return the formatted code to the extension.
