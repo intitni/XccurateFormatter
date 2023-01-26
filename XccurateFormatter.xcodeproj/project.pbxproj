@@ -179,7 +179,7 @@
 		C8A29D9E292F76DA00FF3F43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C8A29D9F292FAA4A00FF3F43 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C8A29DA22930520800FF3F43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKeys.swift; path = ../../../UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		C8A29DAF2930637700FF3F43 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		C8A29DB3293098F600FF3F43 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C8A29DB62930A02600FF3F43 /* SwiftFormatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFormatSettings.swift; sourceTree = "<group>"; };
 		C8A29DB82930A06E00FF3F43 /* AppSwiftFormatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSwiftFormatSettings.swift; sourceTree = "<group>"; };
