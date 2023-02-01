@@ -21,9 +21,11 @@ But the solution shift was such a rush that some code may not make too much sens
 
 ## Usage
 
+Get the latest version from the Release tab of this repositry.
+
 ### Enable Extension
 
-Go to Settings.app search for Xcode extension, and enable Xccurate Formatter.
+Go to System Settings.app search for Xcode extension, and enable Xccurate Formatter.
 
 If the extension complains that it has no permission to use Accessibility API, go turn it on in Settings.app for `XccurateFormatter`.
 
@@ -69,10 +71,6 @@ Alternatively, you can add a file `.xccurateformatter` to the project root to ov
 ```
 
 All fields are optional.
-
-### Update
-
-After updating the app, please restart the XPC service manually.
 
 ### Configurations
 
