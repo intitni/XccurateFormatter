@@ -4,18 +4,21 @@ import Foundation
 class EditorExtensionXPCService: NSObject, EditorExtensionXPCServiceProtocol {
     func formatEditingFile(
         content: String,
+        lines: [String],
         uti: String,
-        withReply reply: @escaping (String?, Error?) -> Void
+        withReply reply: @escaping (Data?, Error?) -> Void
     ) {
         Task {
             do {
                 let contentURL = try await getXcodeEditingContentURL()
-                let result = try await Service().formatEditingFile(
+                let newContent = try await Service().formatEditingFile(
                     content: content,
                     uti: uti,
                     contentURL: contentURL
                 )
-                reply(result, nil)
+                let split = newContent.breakLines()
+                let diff = split.difference(from: lines)
+                reply(try JSONEncoder().encode(diff), nil)
             } catch {
                 let nserror = NSError(domain: "com.intii.XccurateFormatter", code: -1, userInfo: [
                     NSLocalizedDescriptionKey: error.localizedDescription,
@@ -95,5 +98,21 @@ extension AXUIElement {
             return value
         }
         throw error
+    }
+}
+
+extension String {
+    /// Break a string into lines.
+    func breakLines() -> [String] {
+        let lines = split(separator: "\n", omittingEmptySubsequences: false)
+        var all = [String]()
+        for (index, line) in lines.enumerated() {
+            if index == lines.endIndex - 1 {
+                all.append(String(line))
+            } else {
+                all.append(String(line) + "\n")
+            }
+        }
+        return all
     }
 }

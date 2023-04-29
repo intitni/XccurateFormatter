@@ -3,7 +3,8 @@ import Foundation
 @objc(EditorExtensionXPCServiceProtocol) protocol EditorExtensionXPCServiceProtocol {
     func formatEditingFile(
         content: String,
+        lines: [String],
         uti: String,
-        withReply reply: @escaping (String?, Error?) -> Void
+        withReply reply: @escaping (Data?, Error?) -> Void
     )
 }
