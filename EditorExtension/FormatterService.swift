@@ -41,17 +41,31 @@ final class EditorExtensionService {
 
     func formatFile(
         content: String,
+        lines: [String],
         uti: String,
-        completionHandler: @escaping (Result<String, Error>) -> Void
+        completionHandler: @escaping (Result<
+            CollectionDifference<String>?,
+            Error
+        >) -> Void
     ) {
         let service = connection.remoteObjectProxyWithErrorHandler {
             completionHandler(.failure($0))
         } as! EditorExtensionXPCServiceProtocol
-        service.formatEditingFile(content: content, uti: uti, withReply: { result, error in
+        service.formatEditingFile(content: content, lines: lines, uti: uti, withReply: { result, error in
             if let error {
                 completionHandler(.failure(error))
             } else {
-                completionHandler(.success(result ?? content))
+                guard let data = result else {
+                    completionHandler(.success(nil))
+                    return
+                }
+                do {
+                    let diff = try JSONDecoder()
+                        .decode(CollectionDifference<String>.self, from: data)
+                    completionHandler(.success(diff))
+                } catch {
+                    completionHandler(.failure(error))
+                }
             }
         })
     }
