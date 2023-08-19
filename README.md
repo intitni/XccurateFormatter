@@ -13,6 +13,8 @@ Check the file `UTIToExtensionName.swift` for supported file types. Some of them
 
 [Download From Releases](https://github.com/intitni/XccurateFormatter/releases)
 
+<a href="https://www.buymeacoffee.com/intitni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ## Note
 
 The application was originally built using an Apple Script solution with many limitations. Fortunately, some problems caused by it led me to a better solution. 塞翁失马焉知非福.
