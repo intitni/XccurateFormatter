@@ -82,11 +82,15 @@ If no configuration is found, it will use the first formatter in the supported f
 
 It's possible to use Prettier plugins. To add a plugin, you should setup the Prettier Arguments in the settings.
 
-For example, if you want to use the Ruby plugin, you will have to set the text field to 
+For example, if you want to use the Ruby plugin, you will have to 
 
+1. Install the plugin gloablly, make sure you follow it's instruction and install all the dependencies.
+2. Set the Prettier Arguments text field to 
 ```
 --plugin=/opt/homebrew/lib/node_modules/@prettier/plugin-ruby/src/plugin.js
 ```
+
+If you want to enable multiple plugins, just write multiple `--plugin`.
 
 When the arguments field in not empty, the app will run Prettier in an interactive logged-in (`-ilc`) shell so that it can find other dependencies installed by the plugin.
 
