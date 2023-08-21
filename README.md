@@ -76,6 +76,18 @@ Place the formatter configuration files at the project root or its parent direct
 
 If no configuration is found, it will use the first formatter in the supported formatters list that supports the language and has its executable path set.
 
+### Prettier Plugins
+
+It's possible to use Prettier plugins. To add a plugin, you should setup the Prettier Arguments in the settings.
+
+For example, if you want to use the Ruby plugin, you will have to set the text field to 
+
+```
+--plugin=/opt/homebrew/lib/node_modules/@prettier/plugin-ruby/src/plugin.js
+```
+
+When the arguments field in not empty, the app will run Prettier in an interactive logged-in (`-ilc`) shell so that it can find other dependencies installed by the plugin.
+
 ### Key Bindings
 
 You can set key bindings for the command in Xcode settings.
