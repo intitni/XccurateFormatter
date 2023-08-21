@@ -23,6 +23,10 @@ enum Settings {
         string(forKey: SettingsKey.defaultPrettierExecutablePath, from: storage)
     }
 
+    static var defaultPrettierArguments: String? {
+        string(forKey: SettingsKey.defaultPrettierArguments, from: storage)
+    }
+
     static var defaultNPXExecutablePath: String? {
         string(forKey: SettingsKey.defaultNPXExecutablePath, from: storage)
     }
@@ -42,3 +46,4 @@ private func string(forKey key: String, from userDefaults: UserDefaults) -> Stri
 private func bool(forKey key: String, from userDefaults: UserDefaults) -> Bool {
     userDefaults.bool(forKey: key)
 }
+

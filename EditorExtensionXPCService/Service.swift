@@ -148,7 +148,7 @@ final class Service {
 
         formatter = formatters.first {
             $0.hasValidExecutablePath(projectConfiguration: projectConfig)
-        }
+        } ?? Prettier()
         return (formatter, confURL, projectConfig, fileDirectory)
     }
 

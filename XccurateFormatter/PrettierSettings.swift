@@ -5,6 +5,8 @@ struct PrettierSettings: View {
     var defaultPrettierExecutablePath: String = ""
     @AppStorage(SettingsKey.defaultNPXExecutablePath, store: .shared)
     var defaultNPXExecutablePath: String = ""
+    @AppStorage(SettingsKey.defaultPrettierArguments, store: .shared)
+    var defaultPrettierArguments: String = ""
 
     var body: some View {
         Card(
@@ -16,6 +18,14 @@ struct PrettierSettings: View {
                     "Prettier Executable Path",
                     text: $defaultPrettierExecutablePath,
                     prompt: Text("where Prettier is installed.")
+                )
+                .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled(true)
+
+                TextField(
+                    "Prettier Arguments",
+                    text: $defaultPrettierArguments,
+                    prompt: Text("arguments, e.g. --plugin=prettier-plugin-foo")
                 )
                 .textFieldStyle(.roundedBorder)
                 .autocorrectionDisabled(true)
@@ -45,7 +55,7 @@ struct PrettierSettings: View {
                 }
                 Cheatsheet {
                     Text(
-                        "support languages: `JavaScript, tsx, CSS, Less, SCSS, HTML, JSON, Markdown, YAML, XML`"
+                        "support languages: `JavaScript, tsx, CSS, Less, SCSS, HTML, JSON, Markdown, YAML, XML, and others with plugins."
                     )
                 }
             }
@@ -58,3 +68,4 @@ struct PrettierSettings_Previews: PreviewProvider {
         PrettierSettings()
     }
 }
+

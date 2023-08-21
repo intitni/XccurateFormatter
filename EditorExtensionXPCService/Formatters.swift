@@ -7,6 +7,7 @@ struct ProjectConfig: Codable {
     var clangFormatStyle: String?
     var usePrettierFromNodeModules: Bool?
     var prettierExecutablePath: String?
+    var prettierArguments: String?
 }
 
 protocol Formatter {
@@ -126,6 +127,8 @@ struct ClangFormat: Formatter {
 struct Prettier: Formatter {
     var executablePath: String? { Settings.defaultPrettierExecutablePath }
 
+    var arguments: String? { Settings.defaultPrettierArguments }
+
     var configurationFileName: NSRegularExpression {
         try! .init(pattern: #"^\.prettierrc(\..*)?$"#, options: [.caseInsensitive])
     }
@@ -154,6 +157,7 @@ struct Prettier: Formatter {
         confURL _: URL?,
         projectConfig: ProjectConfig?
     ) async throws {
+        let arguments = projectConfig?.prettierArguments ?? arguments ?? ""
         if let usePrettierFromNodeModules = projectConfig?.usePrettierFromNodeModules,
            usePrettierFromNodeModules
         {
@@ -162,16 +166,24 @@ struct Prettier: Formatter {
             try await runCommand(
                 from: "/usr/bin/env",
                 currentDirectoryURL: currentDirectoryURL,
-                args: executablePath, "prettier", "--write", file.path
+                args: executablePath, "prettier", file.path, "--write", arguments
             )
         } else {
             guard let executablePath = projectConfig?.prettierExecutablePath ?? executablePath
             else { throw ExtensionError.other("Prettier executable path not set.") }
-            try await runCommand(
-                from: "/usr/bin/env",
-                currentDirectoryURL: currentDirectoryURL,
-                args: executablePath, "--write", file.path
-            )
+            if arguments.isEmpty {
+                try await runCommand(
+                    from: "/usr/bin/env",
+                    currentDirectoryURL: currentDirectoryURL,
+                    args: executablePath, "--write", file.path
+                )
+            } else {
+                try await runCommand(
+                    from: ProcessInfo.processInfo.environment["SHELL"] ?? "/bin/bash",
+                    currentDirectoryURL: currentDirectoryURL,
+                    args: "-ilc", "\(executablePath) \(file.path) --write \(arguments)"
+                )
+            }
         }
     }
 
@@ -203,6 +215,7 @@ private func runCommand(
             ]
             let outpipe = Pipe()
             task.standardOutput = outpipe
+            task.standardError = outpipe
             task.terminationHandler = { task in
                 if let data = try? outpipe.fileHandleForReading.readToEnd(),
                    let text = String(data: data, encoding: .utf8)
@@ -210,10 +223,13 @@ private func runCommand(
                     if task.terminationStatus == 0 {
                         continuation.resume(returning: text)
                     } else {
-                        continuation.resume(throwing: ExtensionError.other(text))
+                        continuation.resume(
+                            throwing: ExtensionError
+                                .other(text.trimmingCharacters(in: .whitespacesAndNewlines))
+                        )
                     }
                 } else {
-                    continuation.resume(returning: "")
+                    continuation.resume(throwing: ExtensionError.other("Unknown error"))
                 }
             }
             try task.run()
@@ -222,3 +238,4 @@ private func runCommand(
         }
     }
 }
+
