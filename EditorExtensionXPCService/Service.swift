@@ -161,7 +161,15 @@ final class Service {
         in projectURL: URL?
     ) async throws -> String {
         let data = content.data(using: .utf8)
-        let tempDirectory = projectURL ?? FileManager.default.temporaryDirectory
+        let tempDirectory = {
+            if let projectURL {
+                if projectURL.pathExtension == "playground" {
+                    return FileManager.default.temporaryDirectory
+                }
+                return projectURL
+            }
+            return FileManager.default.temporaryDirectory
+        }()
         let fileName = ".xccurate_formatter_\(UUID().uuidString).\(fileExtension ?? "")"
         let fileURL: URL
         if #available(macOS 13.0, *) {
