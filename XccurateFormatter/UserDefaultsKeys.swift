@@ -10,5 +10,6 @@ enum SettingsKey {
     static let defaultClangFormatExecutablePath = "defaultClangFormatExecutablePath"
     static let defaultClangFormatStyle = "defaultClangFormatStyle"
     static let defaultPrettierExecutablePath = "defaultPrettierExecutablePath"
+    static let defaultPrettierArguments = "defaultPrettierArguments"
     static let defaultNPXExecutablePath = "defaultNPXExecutablePath"
 }
