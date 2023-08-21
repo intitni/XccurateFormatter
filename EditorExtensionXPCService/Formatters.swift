@@ -181,7 +181,7 @@ struct Prettier: Formatter {
                 try await runCommand(
                     from: ProcessInfo.processInfo.environment["SHELL"] ?? "/bin/bash",
                     currentDirectoryURL: currentDirectoryURL,
-                    args: "-ilc", "\(executablePath) \(file.path) --write \(arguments)"
+                    args: "-ilc", "\(executablePath) \"\(file.path)\" --write \(arguments)"
                 )
             }
         }
