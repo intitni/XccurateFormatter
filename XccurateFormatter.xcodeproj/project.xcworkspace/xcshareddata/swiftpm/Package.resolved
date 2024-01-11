@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "codablewrappers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/GottaGetSwifty/CodableWrappers.git",
+      "state" : {
+        "revision" : "4eb46a4c656333e8514db8aad204445741de7d40",
+        "version" : "2.0.7"
+      }
+    },
+    {
+      "identity" : "copilotforxcodekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/intitni/CopilotForXcodeKit.git",
+      "state" : {
+        "branch" : "feature/passing-file-content-to-extension",
+        "revision" : "bdc3693bc12e1aa88ddbd2549383d92ce6312058"
+      }
+    }
+  ],
+  "version" : 2
+}
